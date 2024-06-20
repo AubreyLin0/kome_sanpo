@@ -26,10 +26,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-<<<<<<< HEAD
 .env
-=======
->>>>>>> develop
 .env*.local
 
 # vercel
@@ -39,9 +36,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-<<<<<<< HEAD
 # database
 db
-=======
+
 *storybook.log
->>>>>>> develop
