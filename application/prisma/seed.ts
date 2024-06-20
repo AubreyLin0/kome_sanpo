@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 const usersData = [
   {
     id: "1",
-    name: "kome",
+    name: "komekun",
     email: "kome@pj100.biz",
   },
   {
@@ -15,6 +15,7 @@ const usersData = [
 ];
 
 const seedUsers = async () => {
+  await prisma.user.deleteMany();
   for (const user of usersData) {
     await prisma.user.create({
       data: user,
