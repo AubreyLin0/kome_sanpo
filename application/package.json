@@ -5,18 +5,20 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "jotai": "^2.8.3",
     "@prisma/client": "^5.15.1",
     "next": "14.2.4",
-    "lint": "next lint",
-    "test": "vitest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
     "next-router-mock": "^0.9.13",
     "react": "^18",
     "react-dom": "^18"
