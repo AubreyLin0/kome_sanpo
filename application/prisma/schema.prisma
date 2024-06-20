@@ -12,4 +12,17 @@ model User {
   id    String  @id @default(cuid())
   name  String?
   email String? @unique
+  posts Post[]  @relation("UserPosts")
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  title     String
+  content   String?
+  authorId  String
+  createdAt DateTime @default(now())
+
+  author User @relation(fields: [authorId], references: [id],name:"UserPosts")
+
+  @@map(name: "posts")
 }
