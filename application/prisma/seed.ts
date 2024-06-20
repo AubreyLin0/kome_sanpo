@@ -1,7 +1,7 @@
-import { PrismaClient, Prisma } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-const usersData: Prisma.UserCreateInput[] = [
+const usersData = [
   {
     id: "1",
     name: "kome",
@@ -15,14 +15,11 @@ const usersData: Prisma.UserCreateInput[] = [
 ];
 
 const seedUsers = async () => {
-  const users = [];
   for (const user of usersData) {
     await prisma.user.create({
       data: user,
     });
-    users.push(user);
   }
-  return users;
 };
 
 // 定義されたデータを実際のモデルへ登録する処理
