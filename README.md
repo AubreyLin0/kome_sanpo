@@ -77,10 +77,18 @@ docker compose down
 
 ### 初回
 
-0. .env ファイルを作成。上記の変数名と値を記述。
-1. docker compose build
+1. cd application
+2. .env ファイルを作成。上記の変数名と値を記述。
+3. docker compose build
+4. docker compose up -d
+5. docker container exec -it kome_sanpo_app sh
+6. npx prisma db push
+7. npx prisma db seed
+8. npm run dev
+
+### 初回以降
+
+1. cd application
 2. docker compose up -d
 3. docker container exec -it kome_sanpo_app sh
-4. npx prisma db push
-5. npx prisma db seed
-6. npm run dev
+4. npm run dev
