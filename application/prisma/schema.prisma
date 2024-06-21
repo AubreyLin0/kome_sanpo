@@ -3,13 +3,13 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("DATABASE_URL") // Connect to Supabase via connection pooling with Supavisor.
-  directUrl = env("DIRECT_URL") // Direct connection to the database. Used for migrations.
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id    String  @id @default(uuid())
-  email String  @unique
+  id    String @id @default(uuid())
+  email String @unique
   name  String
 }
