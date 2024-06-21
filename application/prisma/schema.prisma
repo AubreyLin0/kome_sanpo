@@ -9,7 +9,20 @@ datasource db {
 }
 
 model User {
-  id    String  @id @default(cuid())
-  name  String?
-  email String? @unique
+  id    String  @id @default(uuid())
+  email String  @unique
+  name  String
+  posts Post[]  @relation("UserPosts")
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  title     String
+  content   String?
+  authorId  String
+  createdAt DateTime @default(now())
+
+  author    User     @relation(fields: [authorId], references: [id], name: "UserPosts")
+
+  @@map(name: "posts")
 }
