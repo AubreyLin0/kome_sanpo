@@ -23,7 +23,7 @@ docker container exec -it kome_sanpo_app sh
 4. マイグレーションの実行。（初回と schema に変更を加えた場合のみ）
 
 ```
-npx prisma migrate dev --name my_migrate_init
+npx prisma migrate dev --name <migration_name>
 ```
 
 5. DB に初期データを取り込む。（初回と seed.ts に変更を加えた場合のみ）
