@@ -58,11 +58,11 @@ docker compose down
 
 ## 環境変数
 
-| 変数名                   | 役割                                             | ローカル環境での値                                            |
-| ------------------------ | ------------------------------------------------ | ------------------------------------------------------------- |
-| DB_HOST                  | DB のホスト名（Docker で使用）                   | db                                                            |
-| DB_NAME                  | 　 DB のデータベース名（Docker で使用）          | kome_sanpo_db                                                 |
-| DB_USER                  | DB のユーザー名（Docker で使用）                 | admin                                                         |
-| DB_PASS                  | DB のパスワード（Docker で使用）                 | ai8515                                                        |
-| POSTGRES_PRISMA_URL      | prisma と DB を接続するための URL                | postgresql://admin:ai8515@db:5432/kome_sanpo_db?schema=public |
-| POSTGRES_URL_NON_POOLING | プーリング（接続の再利用）を使用しない場合の URL | postgresql://admin:ai8515@db:5432/kome_sanpo_db?schema=public |
+| 変数名       | 役割                                             | ローカル環境での値                                            |
+| ------------ | ------------------------------------------------ | ------------------------------------------------------------- |
+| DB_HOST      | DB のホスト名（Docker で使用）                   | db                                                            |
+| DB_NAME      | 　 DB のデータベース名（Docker で使用）          | kome_sanpo_db                                                 |
+| DB_USER      | DB のユーザー名（Docker で使用）                 | admin                                                         |
+| DB_PASS      | DB のパスワード（Docker で使用）                 | ai8515                                                        |
+| DATABASE_URL | prisma と DB を接続するための URL                | postgresql://admin:ai8515@db:5432/kome_sanpo_db?schema=public |
+| DIRECT_URL   | プーリング（接続の再利用）を使用しない場合の URL | postgresql://admin:ai8515@db:5432/kome_sanpo_db?schema=public |
