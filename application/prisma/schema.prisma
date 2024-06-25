@@ -8,8 +8,11 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model User {
+model Restaurant {
   id    String @id @default(dbgenerated("gen_random_uuid()"))
-  email String @unique
-  name  String
+  name  String @unique
+  address String @unique
+  phone_number String @unique
+  created_at DateTime @default(dbgenerated("gen_random_uuid()"))
+  created_by String 
 }
