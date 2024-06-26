@@ -1,10 +1,15 @@
+import { Plus } from "lucide-react";
 import { Inter } from "next/font/google";
+import Image from "next/image";
+
+import headerIcon from "../../public/headerIcon.png";
 
 import type { Metadata } from "next";
 
 import "./globals.css";
 import { Button } from "@/features/common/components/Button";
 import { Search } from "@/features/common/components/Search";
+import { UserIcon } from "@/features/common/components/UserIcon";
 import { getSearch } from "@/lib/data";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,12 +26,19 @@ export default async function RootLayout({
 }>) {
   const searchDate = await getSearch();
   return (
-    <html lang="en">
+    <html lang="ja">
       <body className={inter.className}>
-        <header className="grid grid-cols-2-4-2 gap-6">
-          <h1>こめさんぽ</h1>
+        <header className="grid grid-cols-2-4-2 justify-items-center items-center h-[65px] shadow">
+          <Image src={headerIcon} alt="headerIcon" />
           <Search placeholder="店名・ジャンルで検索" data={searchDate} />
-          <Button>検索</Button>
+          <div className="flex gap-4">
+            <Button className="font-semibold">
+              <Plus size="16px" strokeWidth="5px" className="mr-2" />
+              お店を追加
+            </Button>
+            {/* とりあえずshadcn-uiのデフォルトで*/}
+            <UserIcon src="https://github.com/shadcn.png" />
+          </div>
         </header>
         {children}
       </body>

@@ -1,11 +1,11 @@
-import { Button as Component } from ".";
+import { UserIcon as Component } from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
+
 export default {
   component: Component,
   args: {
-    children: "サンプルボタン",
-    className: "",
+    src: "https://github.com/shadcn.png",
   },
 } as Meta<typeof Component>;
 
