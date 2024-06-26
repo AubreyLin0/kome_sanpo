@@ -1,4 +1,6 @@
 "use client";
+import { useState } from "react";
+
 import {
   Command,
   CommandEmpty,
@@ -8,15 +10,21 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/shadcn-ui/command";
-import { useState } from "react";
+
+type SearchData = {
+  id: string;
+  genre: string;
+}[];
 
 type Props = {
   placeholder: string;
+  data: SearchData;
 };
 
 // 検索ボックスを表示するタイミングは、フォーカス時？それとも何かキーワードを入力した時？
-export const Search = ({ placeholder }: Props) => {
+export const Search = ({ placeholder, data }: Props) => {
   const [open, setIsOpen] = useState<boolean>(false);
+  const [value, setValue] = useState<string>("");
   return (
     <Command>
       <CommandInput
@@ -28,12 +36,12 @@ export const Search = ({ placeholder }: Props) => {
         <>
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="ジャンル">
-              <CommandItem>イタリアン</CommandItem>
-              <CommandItem>中華</CommandItem>
-            </CommandGroup>
-            <CommandGroup heading="レストラン">
-              <CommandItem>餃子の王将</CommandItem>
+            <CommandGroup>
+              {data.map((item) => (
+                <CommandItem key={item.id} onClick={() => setValue(item.genre)}>
+                  {item.genre}
+                </CommandItem>
+              ))}
             </CommandGroup>
           </CommandList>
           <CommandSeparator />
