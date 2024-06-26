@@ -27,7 +27,7 @@ export default async function RootLayout({
   const searchDate = await getSearch();
   return (
     <html lang="ja">
-      <body className={inter.className}>
+      <body className={`${inter.className}  min-h-[100vh]`}>
         <header className="grid grid-cols-2-4-2 justify-items-center items-center h-[65px] shadow">
           <Image src={headerIcon} alt="headerIcon" />
           <Search placeholder="店名・ジャンルで検索" data={searchDate} />
@@ -41,6 +41,9 @@ export default async function RootLayout({
           </div>
         </header>
         {children}
+        <footer className="text-text sticky top-[100vw] width-full bg-primary h-[40px] flex justify-center items-center">
+          © 2024 Aiful Digital Department
+        </footer>
       </body>
     </html>
   );

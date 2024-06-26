@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      spacing: {
+        "100vw": "100vw",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
