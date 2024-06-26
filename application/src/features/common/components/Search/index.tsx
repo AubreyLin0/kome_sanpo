@@ -21,16 +21,29 @@ type Props = {
   data: SearchData;
 };
 
-// 検索ボックスを表示するタイミングは、フォーカス時？それとも何かキーワードを入力した時？
 export const Search = ({ placeholder, data }: Props) => {
   const [open, setIsOpen] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
+  const [inputValue, setInputText] = useState<string>();
+  const [selectedItem, setSelectedItem] = useState<string>();
+
+  const handleSelect = (value: string) => {
+    setInputText(value);
+    setSelectedItem(value);
+  };
+
   return (
-    <Command>
+    <Command value={selectedItem}>
       <CommandInput
         placeholder={placeholder}
+        onClick={() => setIsOpen(true)}
+        value={inputValue}
+        onValueChange={(value) => {
+          setInputText(value);
+          if (selectedItem) {
+            setSelectedItem(undefined);
+          }
+        }}
         onBlur={() => setIsOpen(false)}
-        onFocus={() => setIsOpen(true)}
       />
       {open && (
         <>
@@ -38,7 +51,17 @@ export const Search = ({ placeholder, data }: Props) => {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
               {data.map((item) => (
-                <CommandItem key={item.id} onClick={() => setValue(item.genre)}>
+                <CommandItem
+                  key={item.id}
+                  //クリック時にonBlurでとじないようにするには、oonBlurより早く発火されるonMouseDownを使う
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                    handleSelect(item.genre);
+                  }}
+                  // onMouseDownではエンターキーで選択できないので、onSelectも使う
+                  onSelect={() => handleSelect(item.genre)}
+                  value={item.genre}
+                >
                   {item.genre}
                 </CommandItem>
               ))}
