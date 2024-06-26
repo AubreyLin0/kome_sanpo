@@ -60,6 +60,9 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      gridTemplateColumns: {
+        "2-4-2": "2fr 4fr 2fr",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

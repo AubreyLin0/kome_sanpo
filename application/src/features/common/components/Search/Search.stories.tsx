@@ -1,9 +1,10 @@
-import { Button as Component } from ".";
+import { Search as Component } from ".";
 import type { Meta, StoryObj } from "@storybook/react";
+
 export default {
   component: Component,
   args: {
-    children: "サンプルボタン",
+    placeholder: "店名・ジャンルで検索",
   },
 } as Meta<typeof Component>;
 
