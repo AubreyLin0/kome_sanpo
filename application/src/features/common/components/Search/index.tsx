@@ -34,11 +34,15 @@ export const Search = ({ placeholder, data, className = "" }: Props) => {
     setSelectedItem(value);
   };
 
+  const handleOpen = (value: boolean) => {
+    setIsOpen(value);
+  };
+
   return (
     <Command value={selectedItem} isOpen={isOpen} className={className}>
       <CommandInput
         placeholder={placeholder}
-        onClick={() => setIsOpen(true)}
+        onClick={() => handleOpen(true)}
         value={inputValue}
         onValueChange={(value) => {
           setInputText(value);
@@ -46,7 +50,7 @@ export const Search = ({ placeholder, data, className = "" }: Props) => {
             setSelectedItem(undefined);
           }
         }}
-        onBlur={() => setIsOpen(false)}
+        onBlur={() => handleOpen(false)}
         isOpen={isOpen}
       />
       {isOpen && (
