@@ -22,7 +22,7 @@ export const Header = async ({ src }: Props) => {
         data={searchDate}
         className="hidden md:flex"
       />
-      <div className="flex items-center justify-center gap-3 p-3">
+      <div className="flex items-center justify-end sm:justify-center gap-3 p-3 w-full">
         <Button className="font-semibold">
           <Plus size="16px" strokeWidth="5px" className="mr-2" />
           お店を追加
