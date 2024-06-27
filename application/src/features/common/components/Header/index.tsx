@@ -17,8 +17,12 @@ export const Header = async ({ src }: Props) => {
   return (
     <header className="grid grid-cols-2 gap-3 md:grid-cols-2-4-2 justify-items-center items-center h-[65px] shadow">
       <Image src={headerIcon} alt="headerIcon" className="p-3" />
-      <Search placeholder="店名・ジャンルで検索" data={searchDate} />
-      <div className="flex items-center justify-center gap-3">
+      <Search
+        placeholder="店名・ジャンルで検索"
+        data={searchDate}
+        className="hidden md:flex"
+      />
+      <div className="flex items-center justify-center gap-3 p-3">
         <Button className="font-semibold">
           <Plus size="16px" strokeWidth="5px" className="mr-2" />
           お店を追加
