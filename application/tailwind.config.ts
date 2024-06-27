@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       screens: {
-        sm: "428px",
+        sm: "440px",
         md: "820px",
       },
       spacing: {
