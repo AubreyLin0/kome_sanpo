@@ -59,7 +59,7 @@
     "no-plusplus": "error",
     "no-nested-ternary": "error",
     "no-else-return": "error",
-    "id-length": "error",
+    "id-length": "warn",
     "camelcase": "error"
   }
 }
