@@ -22,7 +22,7 @@ const config = {
         "100vw": "100vw",
       },
       colors: {
-        border: "hsl(var(--border))",
+        border: "#F3F3F3",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",

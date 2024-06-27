@@ -11,12 +11,16 @@ import { Dialog, DialogContent } from "@/shadcn-ui/dialog";
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive>
->(({ className, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive> & { isOpen?: boolean }
+>(({ className, isOpen = false, ...props }, ref) => (
   <CommandPrimitive
     ref={ref}
     className={cn(
       "relative flex w-full flex-col rounded-md bg-popover text-popover-foreground",
+      {
+        "bg-mainGray": !isOpen,
+        "shadow-lg": isOpen,
+      },
       className
     )}
     {...props}
@@ -40,9 +44,14 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
 
 const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
->(({ className, ...props }, ref) => (
-  <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & {
+    isOpen?: boolean;
+  }
+>(({ className, isOpen = false, ...props }, ref) => (
+  <div
+    className={`flex items-center px-3 ${isOpen && "border-b-2"}`}
+    cmdk-input-wrapper=""
+  >
     <Search className="mr-2 h-4 w-4 shrink-0 opacity-40" />
     <CommandPrimitive.Input
       ref={ref}
@@ -59,12 +68,17 @@ CommandInput.displayName = CommandPrimitive.Input.displayName;
 
 const CommandList = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
->(({ className, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.List> & {
+    isOpen?: boolean;
+  }
+>(({ className, isOpen = false, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
     className={cn(
       "absolute top-full w-full bg-white max-h-[300px] overflow-y-auto overflow-x-hidden",
+      {
+        "shadow-lg": isOpen,
+      },
       className
     )}
     {...props}

@@ -22,7 +22,7 @@ type Props = {
 };
 
 export const Search = ({ placeholder, data }: Props) => {
-  const [open, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [inputValue, setInputText] = useState<string>();
   const [selectedItem, setSelectedItem] = useState<string>();
 
@@ -32,7 +32,7 @@ export const Search = ({ placeholder, data }: Props) => {
   };
 
   return (
-    <Command value={selectedItem}>
+    <Command value={selectedItem} isOpen={isOpen}>
       <CommandInput
         placeholder={placeholder}
         onClick={() => setIsOpen(true)}
@@ -44,10 +44,11 @@ export const Search = ({ placeholder, data }: Props) => {
           }
         }}
         onBlur={() => setIsOpen(false)}
+        isOpen={isOpen}
       />
-      {open && (
+      {isOpen && (
         <>
-          <CommandList>
+          <CommandList isOpen={isOpen}>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
               {data.map((item) => (
