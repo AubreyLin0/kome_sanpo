@@ -1,16 +1,10 @@
-import { Plus } from "lucide-react";
 import { Inter } from "next/font/google";
-import Image from "next/image";
-
-import headerIcon from "../../public/headerIcon.png";
 
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { Button } from "@/features/common/components/Button";
-import { Search } from "@/features/common/components/Search";
-import { UserIcon } from "@/features/common/components/UserIcon";
-import { getSearch } from "@/lib/data";
+import { Footer } from "@/features/common/components/Footer";
+import { Header } from "@/features/common/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,26 +18,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const searchDate = await getSearch();
   return (
     <html lang="ja">
       <body className={`${inter.className}  min-h-[100vh]`}>
-        <header className="grid grid-cols-2-4-2 justify-items-center items-center h-[65px] shadow">
-          <Image src={headerIcon} alt="headerIcon" />
-          <Search placeholder="店名・ジャンルで検索" data={searchDate} />
-          <div className="flex gap-4">
-            <Button className="font-semibold">
-              <Plus size="16px" strokeWidth="5px" className="mr-2" />
-              お店を追加
-            </Button>
-            {/* とりあえずshadcn-uiのデフォルトで*/}
-            <UserIcon src="https://github.com/shadcn.png" />
-          </div>
-        </header>
+        {/* とりあえずshadcn-uiのデフォルトで*/}
+        <Header src="https://github.com/shadcn.png" />
         {children}
-        <footer className="text-text sticky top-[100vw] width-full bg-primary h-[40px] flex justify-center items-center">
-          © 2024 Aiful Digital Department
-        </footer>
+        <Footer />
       </body>
     </html>
   );

@@ -21,6 +21,8 @@ type Props = {
   data: SearchData;
 };
 
+// todo:server actionsを使用した検索処理を実装する
+//　そのためにはCONFORMを使用する
 export const Search = ({ placeholder, data }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [inputValue, setInputText] = useState<string>();
