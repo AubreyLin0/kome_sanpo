@@ -16,7 +16,7 @@ const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={cn(
-      "relative flex w-full flex-col rounded-md bg-popover text-popover-foreground",
+      "relative hidden md:flex w-full flex-col rounded-md bg-popover text-popover-foreground ",
       {
         "bg-mainGray": !isOpen,
         "shadow-lg": isOpen,

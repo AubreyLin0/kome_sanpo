@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        sm: "428px",
+        md: "820px",
+      },
       spacing: {
         "100vw": "100vw",
       },
