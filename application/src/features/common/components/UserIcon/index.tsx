@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/shadcn-ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/src/shadcn-ui/avatar";
 
 type Props = {
   src: string;

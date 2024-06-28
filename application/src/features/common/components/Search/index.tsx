@@ -9,7 +9,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/shadcn-ui/command";
+} from "@/src/shadcn-ui/command";
 
 type SearchData = {
   id: string;
@@ -26,11 +26,11 @@ type Props = {
 //　そのためにはCONFORMを使用する
 export const Search = ({ placeholder, data, className = "" }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [inputValue, setInputText] = useState<string>();
+  const [inputValue, setInputValue] = useState<string>();
   const [selectedItem, setSelectedItem] = useState<string>();
 
   const handleSelect = (value: string) => {
-    setInputText(value);
+    setInputValue(value);
     setSelectedItem(value);
   };
 
@@ -45,7 +45,7 @@ export const Search = ({ placeholder, data, className = "" }: Props) => {
         onClick={() => handleOpen(true)}
         value={inputValue}
         onValueChange={(value) => {
-          setInputText(value);
+          setInputValue(value);
           if (selectedItem) {
             setSelectedItem(undefined);
           }

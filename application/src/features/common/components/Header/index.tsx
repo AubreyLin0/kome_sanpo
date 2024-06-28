@@ -1,12 +1,12 @@
 import { Plus } from "lucide-react";
 import Image from "next/image";
 
-import headerIcon from "../../../../../public/headerIcon.png";
 import { Button } from "../Button";
 import { Search } from "../Search";
 import { UserIcon } from "../UserIcon";
 
-import { getSearch } from "@/lib/data";
+import headerIcon from "@/public/headerIcon.png";
+import { getSearch } from "@/src/lib/data";
 
 type Props = {
   src: string;

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { Button as ShadcnButton } from "@/shadcn-ui/button";
+import { Button as ShadcnButton } from "@/src/shadcn-ui/button";
 
 type Props = {
   children: ReactNode;
