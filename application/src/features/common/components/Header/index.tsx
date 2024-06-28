@@ -1,10 +1,8 @@
 import { Plus } from "lucide-react";
 import Image from "next/image";
-
 import { Button } from "../Button";
 import { Search } from "../Search";
 import { UserIcon } from "../UserIcon";
-
 import headerIcon from "@/public/headerIcon.png";
 import { getSearch } from "@/src/lib/data";
 

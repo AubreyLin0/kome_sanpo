@@ -41,9 +41,7 @@
         "pathGroupsExcludedImportTypes": ["builtin"],
         "alphabetize": {
           "order": "asc"
-        },
-        //以下より追加した内容になる
-        "newlines-between": "always"
+        }
       }
     ],
     "no-var": "error",

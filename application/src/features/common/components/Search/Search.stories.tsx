@@ -1,7 +1,5 @@
 import { Search as Component } from ".";
-
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { sampleData } from "@/src/lib/data";
 
 export default {
