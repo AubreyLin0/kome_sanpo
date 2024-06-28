@@ -22,7 +22,7 @@ export default async function RootLayout({
     <html lang="ja">
       <body className={`${inter.className}  min-h-[100vh]`}>
         {/* とりあえずshadcn-uiのデフォルトで*/}
-        <Header src="https://github.com/shadcn.png" />
+        <Header />
         {children}
         <Footer />
       </body>

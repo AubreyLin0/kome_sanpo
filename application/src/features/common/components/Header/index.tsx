@@ -8,11 +8,7 @@ import { UserIcon } from "../UserIcon";
 import headerIcon from "@/public/headerIcon.png";
 import { getSearch } from "@/src/lib/data";
 
-type Props = {
-  src: string;
-};
-
-export const Header = async ({ src }: Props) => {
+export const Header = async () => {
   const searchDate = await getSearch();
   return (
     <header className="grid grid-cols-2 gap-3 md:grid-cols-2-4-2 justify-items-center items-center h-[65px] shadow">
@@ -27,7 +23,8 @@ export const Header = async ({ src }: Props) => {
           <Plus size="16px" strokeWidth="5px" className="mr-2" />
           お店を追加
         </Button>
-        <UserIcon src={src} />
+        {/* とりあえずshadcnのデフォルトを使用 */}
+        <UserIcon src={"https://github.com/shadcn.png"} />
       </div>
     </header>
   );
