@@ -8,11 +8,67 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+model User {
+  id               String            @id @default(dbgenerated("gen_random_uuid()"))
+  googleId         String            @unique
+  email            String            @unique
+  name             String
+  profilePicture   Bytes?
+  createdAt        DateTime          @default(dbgenerated("now()"))
+  updatedAt        DateTime          @updatedAt
+  reviews          Review[]
+  savedRestaurants SavedRestaurants[]
+  vistedRestaurants VistedRestaurants[]
+}
+
 model Restaurant {
-  id    String @id @default(dbgenerated("gen_random_uuid()"))
-  name  String @unique
-  address String @unique
-  phone_number String @unique
-  created_at DateTime @default(dbgenerated("gen_random_uuid()"))
-  created_by String 
+  id              String             @id @default(dbgenerated("gen_random_uuid()"))
+  name            String             @unique
+  address         String             @unique
+  phoneNumber     String             @unique
+  openTime        String
+  closeTime       String
+  genre           String
+  images          RestaurantImages[]
+  createdAt       DateTime           @default(dbgenerated("now()"))
+  createdBy       String
+  review          Review[]
+  savedRestaurants SavedRestaurants[]
+  vistedRestaurants VistedRestaurants[]
+}
+
+model Review {
+  id           String     @id @default(dbgenerated("gen_random_uuid()"))
+  userId       String
+  restaurantId String
+  content      String
+  rating       Int
+  createdAt    DateTime   @default(dbgenerated("now()"))
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SavedRestaurants {
+  id           String     @id @default(dbgenerated("gen_random_uuid()"))
+  userId       String
+  restaurantId String
+  savedAt    DateTime   @default(dbgenerated("now()"))
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VistedRestaurants {
+  id           String     @id @default(dbgenerated("gen_random_uuid()"))
+  userId       String
+  restaurantId String
+  vistedAt       DateTime   @default(dbgenerated("now()"))
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model RestaurantImages {
+  id           String     @id @default(dbgenerated("gen_random_uuid()"))
+  restaurantId String
+  image        Bytes
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
 }
