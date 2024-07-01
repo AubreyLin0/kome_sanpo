@@ -1,18 +1,27 @@
 import { ReactNode } from "react";
-import { Button as ShadcnButton } from "@/shadcn-ui/button";
+import { Button as ShadcnButton } from "@/src/shadcn-ui/button";
 
 type Props = {
-  label: ReactNode;
+  children: ReactNode;
   variant?: "default" | "outline";
+  className?: string;
+  size?: "default" | "sm" | "lg" | "icon";
   disabled?: boolean;
 };
 
 export const Button = ({
-  label,
+  children,
   variant = "default",
+  className = "",
+  size = "default",
   disabled = false,
 }: Props) => (
-  <ShadcnButton variant={variant} disabled={disabled}>
-    {label}
+  <ShadcnButton
+    variant={variant}
+    className={className}
+    size={size}
+    disabled={disabled}
+  >
+    {children}
   </ShadcnButton>
 );

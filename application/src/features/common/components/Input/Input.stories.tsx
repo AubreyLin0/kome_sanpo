@@ -1,11 +1,10 @@
-import { Button as Component } from ".";
+import { Input as Component } from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
   component: Component,
   args: {
-    children: "サンプルボタン",
-    className: "",
+    label: "サンプル",
   },
 } as Meta<typeof Component>;
 

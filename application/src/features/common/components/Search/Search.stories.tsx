@@ -1,11 +1,12 @@
-import { Button as Component } from ".";
+import { Search as Component } from ".";
 import type { Meta, StoryObj } from "@storybook/react";
+import { sampleData } from "@/src/lib/data";
 
 export default {
   component: Component,
   args: {
-    children: "サンプルボタン",
-    className: "",
+    placeholder: "店名・ジャンルで検索",
+    data: sampleData,
   },
 } as Meta<typeof Component>;
 

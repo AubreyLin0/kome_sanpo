@@ -18,13 +18,22 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        sm: "440px",
+        md: "820px",
+      },
+      spacing: {
+        "100vw": "100vw",
+      },
       colors: {
-        border: "hsl(var(--border))",
+        border: "#F3F3F3",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         subText: "#A0A0A0",
+        mainGray: "#F3F3F3",
+        text: "#4C4B4B",
         primary: {
           DEFAULT: "#EAC505",
           foreground: "hsl(var(--primary-foreground))",
@@ -58,6 +67,9 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      gridTemplateColumns: {
+        "2-4-2": "2fr 4fr 2fr",
       },
       keyframes: {
         "accordion-down": {
