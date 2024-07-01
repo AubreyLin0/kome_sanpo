@@ -1,11 +1,20 @@
 import { ReactNode } from "react";
-import { Button as ShadcnButton } from "@/shadcn-ui/button";
+import { Button as ShadcnButton } from "@/src/shadcn-ui/button";
 
 type Props = {
-  label: ReactNode;
+  children: ReactNode;
   variant?: "default" | "outline";
+  className?: string;
+  size?: "default" | "sm" | "lg" | "icon";
 };
 
-export const Button = ({ label, variant = "default" }: Props) => (
-  <ShadcnButton variant={variant}>{label}</ShadcnButton>
+export const Button = ({
+  children,
+  variant = "default",
+  className = "",
+  size = "default",
+}: Props) => (
+  <ShadcnButton variant={variant} className={className} size={size}>
+    {children}
+  </ShadcnButton>
 );
