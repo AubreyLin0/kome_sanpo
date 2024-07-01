@@ -23,8 +23,12 @@ export const Card = () => {
         <CardHeader>
           <CardTitle>ハンバーガーレストランハンバーガーレストラン</CardTitle>
         </CardHeader>
-        <CardContent>
-          <Button label="Button" disabled={true} variant="outline" />
+        <CardContent className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Button label="中華" disabled={true} variant="outline" />
+            <p className="text-subText">500m</p>
+          </div>
+          あ
         </CardContent>
         <CardFooter>
           <p>Card Footer</p>
