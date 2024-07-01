@@ -1,9 +1,9 @@
-import { getUser } from "@/lib/data";
+import { getUser } from "@/src/lib/data";
 
 export default async function Home() {
   const users = await getUser();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col items-center justify-between gap-10 p-24">
       <h1 className="text-4xl font-bold text-center">Welcome to こめさんぽ</h1>
       <ul className="flex flex-wrap gap-8">
         {users.map((user) => (

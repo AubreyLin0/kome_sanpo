@@ -13,6 +13,20 @@ const config: StorybookConfig = {
     name: "@storybook/nextjs",
     options: {},
   },
+  features: {
+    //async/await componentに対応
+    experimentalRSC: true,
+  },
   staticDirs: ["../public"],
+  async webpackFinal(config) {
+    const path = require("path");
+    if (!config.resolve) return config;
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.resolve(__dirname, "../src"),
+    };
+
+    return config;
+  },
 };
 export default config;
