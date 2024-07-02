@@ -33,6 +33,8 @@ const config = {
         foreground: "hsl(var(--foreground))",
         subText: "#A0A0A0",
         mainGray: "#F3F3F3",
+        green: "#309E41",
+        red: "#F05F43",
         text: "#4C4B4B",
         primary: {
           DEFAULT: "#EAC505",

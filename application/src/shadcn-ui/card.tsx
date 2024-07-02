@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Noto_Sans_JP } from "next/font/google";
-
-import { cn } from "@/lib/utils";
+import { cn } from "@/src/lib/utils";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -15,7 +14,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border-2 bg-card text-card-foreground shadow-sm w-[320px]  grid grid-rows-[240px_160px] overflow-hidden",
+      "rounded-lg border-2 bg-card text-card-foreground shadow-sm w-[320px] grid grid-rows-[240px_] overflow-hidden",
       notoSansJP.className,
       className
     )}
@@ -30,7 +29,7 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 w-full py-4", className)}
+    className={cn("flex flex-col space-y-1.5 w-full pt-4 pb-3", className)}
     {...props}
   />
 ));
@@ -67,7 +66,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("py-6 pt-0", className)} {...props} />
+  <div ref={ref} className={cn("pt-2 pt-0", className)} {...props} />
 ));
 CardContent.displayName = "CardContent";
 
@@ -77,7 +76,7 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center py-6 pt-0", className)}
+    className={cn("flex items-center pt-2 pb-4", className)}
     {...props}
   />
 ));
