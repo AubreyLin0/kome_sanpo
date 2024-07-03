@@ -4,7 +4,6 @@ import { cn } from "@/src/lib/utils";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  variable: "--font-noto-sans-jp",
 });
 
 const Card = React.forwardRef<
@@ -42,7 +41,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "text-lg font-bold text-text leading-none tracking-tight w-full whitespace-nowrap overflow-hidden text-ellipsis",
+      "text-lg font-bold text-text w-full whitespace-nowrap overflow-hidden text-ellipsis",
       className
     )}
     {...props}
@@ -66,7 +65,14 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("pt-2 pt-0", className)} {...props} />
+  <div
+    ref={ref}
+    className={cn(
+      "pt-2 pt-0 flex items-center justify-between relative",
+      className
+    )}
+    {...props}
+  />
 ));
 CardContent.displayName = "CardContent";
 

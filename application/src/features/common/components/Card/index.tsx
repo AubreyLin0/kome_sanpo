@@ -2,6 +2,7 @@
 import { clsx } from "clsx";
 import Image from "next/image";
 import { Button } from "../Button";
+import { LikeButton } from "../LikeButton";
 import sampleTyahan from "@/public/sample_tyahan.jpeg";
 import {
   Card as ShadcnCard,
@@ -17,6 +18,7 @@ export type CardData = {
   category: string;
   distance: string;
   isOpen: boolean;
+  isLiked: boolean;
   openingTime: string;
 }[];
 
@@ -31,7 +33,7 @@ export const Card = ({ data }: Props) => {
         {!item.isOpen && (
           <>
             <div className="absolute w-full h-full bg-black opacity-50"></div>
-            <p className="absolute text-white font-semibold text-[20px] tracking-wider text-center w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <p className="absolute text-white font-semibold text-[20px] tracking-widest text-center w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               営業時間外
             </p>
           </>
@@ -46,13 +48,14 @@ export const Card = ({ data }: Props) => {
         <CardHeader>
           <CardTitle>{item.title}</CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-between relative">
+        <CardContent>
           <div className="flex items-center gap-2">
             <Button disabled={true} variant="outline" size="sm">
               {item.category}
             </Button>
             <p className="text-subText">{item.distance}</p>
           </div>
+          <LikeButton key={item.title} initialIsLiked={item.isLiked} />
         </CardContent>
         <CardFooter>
           <p

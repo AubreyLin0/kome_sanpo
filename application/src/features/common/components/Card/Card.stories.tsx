@@ -9,6 +9,7 @@ export default {
         category: "中華料理",
         distance: "500m",
         isOpen: true,
+        isLiked: false,
         openingTime: "20:00",
       },
     ],
