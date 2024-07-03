@@ -27,11 +27,21 @@ type Props = {
 export const Card = ({ data }: Props) => {
   return data.map((item) => (
     <ShadcnCard key={item.title}>
-      <Image
-        src={sampleTyahan}
-        alt="sample_tyahan"
-        className="h-full object-cover object-center"
-      />
+      <div className="relative">
+        {!item.isOpen && (
+          <>
+            <div className="absolute w-full h-full bg-black opacity-50"></div>
+            <p className="absolute text-white font-semibold text-[20px] tracking-wider text-center w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              営業時間外
+            </p>
+          </>
+        )}
+        <Image
+          src={sampleTyahan}
+          alt="sample_tyahan"
+          className="h-full object-cover object-center"
+        />
+      </div>
       <div className="w-[320px] px-3">
         <CardHeader>
           <CardTitle>{item.title}</CardTitle>
@@ -48,7 +58,7 @@ export const Card = ({ data }: Props) => {
           <p
             className={clsx("font-bold", {
               "text-green": item.isOpen,
-              "text-primary": !item.isOpen,
+              "text-red": !item.isOpen,
             })}
           >
             {item.isOpen ? "営業中" : "営業時間外"}
