@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getUser } from "@/src/lib/data";
 
 export default async function Home() {
@@ -13,6 +14,7 @@ export default async function Home() {
           </li>
         ))}
       </ul>
+      <Link href="/list">list</Link>
     </main>
   );
 }

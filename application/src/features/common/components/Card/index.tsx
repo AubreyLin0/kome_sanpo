@@ -13,7 +13,7 @@ import {
 } from "@/src/shadcn-ui/card";
 
 // todo:Imageのsrcをpropsで受け取る
-export type CardData = {
+export type CardDataType = {
   title: string;
   category: string;
   distance: string;
@@ -23,7 +23,7 @@ export type CardData = {
 }[];
 
 type Props = {
-  data: CardData;
+  data: CardDataType;
 };
 
 export const Card = ({ data }: Props) => {
