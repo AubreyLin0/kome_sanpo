@@ -2,7 +2,7 @@ import { Skeleton } from "@/src/shadcn-ui/skeleton";
 
 export const CardSkeleton = () => {
   return (
-    <div className="w-[320px] grid grid-rows-[240px_140px] border rounded-md">
+    <div className="w-[320px] grid grid-rows-[240px_140px] border rounded-md m-3">
       <Skeleton className="h-full" />
       <div className="flex flex-col space-y-3 px-3 py-4">
         <Skeleton className="h-7 w-full" />

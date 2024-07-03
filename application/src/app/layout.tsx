@@ -21,7 +21,7 @@ export default async function RootLayout({
       <body className={`${inter.className}  min-h-[100vh]`}>
         {/* とりあえずshadcn-uiのデフォルトで*/}
         <Header />
-        {children}
+        <div className="max-w-[1400px] m-auto">{children}</div>
         <Footer />
       </body>
     </html>

@@ -72,6 +72,7 @@ const config = {
       },
       gridTemplateColumns: {
         "2-4-2": "2fr 4fr 2fr",
+        "auto-fill": "repeat(auto-fill, minmax(340px, 340px))",
       },
       keyframes: {
         "accordion-down": {

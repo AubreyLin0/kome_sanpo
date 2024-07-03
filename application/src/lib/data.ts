@@ -66,14 +66,23 @@ const sampleRestaurantData: CardDataType = [
     isLiked: false,
     openingTime: "10:00",
   },
+  {
+    title: "たい",
+    category: "和食",
+    distance: "500m",
+    isOpen: true,
+    isLiked: false,
+    openingTime: "23:00",
+  },
 ];
 
 export const getRestaurantData = () => {
   // todo:listデータ取得処理を実装する
   // 重い処理
-  noStore();
-  for (let i = 0; i < 500000; i += 1) {
+  for (let i = 0; i < 100000; i += 1) {
+    // do nothing
     console.log(i);
   }
+  noStore();
   return sampleRestaurantData;
 };
