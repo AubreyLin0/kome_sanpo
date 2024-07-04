@@ -9,7 +9,7 @@ import {
 export const Select = () => {
   return (
     <ShadcnSelect>
-      <SelectTrigger className="w-[180px] grid-column-end--1 mr-4">
+      <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Theme" />
       </SelectTrigger>
       <SelectContent>

@@ -9,7 +9,9 @@ export default async function List() {
   return (
     <>
       <div className={clsx(gridStyle, "place-items-end")}>
-        <Select />
+        <div className="grid-column-end--1 mr-4">
+          <Select />
+        </div>
       </div>
       <div className={clsx(gridStyle, "place-items-center")}>
         <Card data={data} />
