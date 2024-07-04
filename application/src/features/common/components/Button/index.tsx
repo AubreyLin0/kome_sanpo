@@ -5,7 +5,7 @@ type Props = {
   children: ReactNode;
   variant?: "default" | "outline";
   className?: string;
-  size?: "default" | "sm" | "lg" | "icon";
+  size?: "default" | "sm" | "lg" | "icon" | "xs";
   disabled?: boolean;
 };
 

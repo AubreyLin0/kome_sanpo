@@ -1,9 +1,10 @@
 "use client";
 import { clsx } from "clsx";
 import Image from "next/image";
+import { CardDataType } from "../../type";
 import { Button } from "../Button";
 import { LikeButton } from "../LikeButton";
-import sampleTyahan from "@/public/sample_tyahan.jpeg";
+import sample_soumen from "@/public/sample_soumen.jpeg";
 import {
   Card as ShadcnCard,
   CardHeader,
@@ -12,23 +13,16 @@ import {
   CardTitle,
 } from "@/src/shadcn-ui/card";
 
-// todo:Imageのsrcをpropsで受け取る
-export type CardDataType = {
-  title: string;
-  category: string;
-  distance: string;
-  isOpen: boolean;
-  isLiked: boolean;
-  openingTime: string;
-}[];
-
 type Props = {
   data: CardDataType;
 };
 
 export const Card = ({ data }: Props) => {
   return data.map((item) => (
-    <ShadcnCard key={item.title}>
+    <ShadcnCard
+      key={item.title}
+      className="border-2 w-[320px] shadow-md grid grid-rows-[240px_] rounded-lg"
+    >
       <div className="relative">
         {!item.isOpen && (
           <>
@@ -39,7 +33,7 @@ export const Card = ({ data }: Props) => {
           </>
         )}
         <Image
-          src={sampleTyahan}
+          src={sample_soumen}
           alt="sample_tyahan"
           className="h-full object-cover object-center"
         />
@@ -65,9 +59,9 @@ export const Card = ({ data }: Props) => {
             })}
           >
             {item.isOpen ? "営業中" : "営業時間外"}
-          </p>
-          <p className="pl-2 text-text">
-            {item.isOpen ? "営業終了" : "営業開始"}：{item.openingTime}
+            <span className="pl-2 text-text font-normal">
+              {item.isOpen ? "営業終了" : "営業開始"}：{item.openingTime}
+            </span>
           </p>
         </CardFooter>
       </div>

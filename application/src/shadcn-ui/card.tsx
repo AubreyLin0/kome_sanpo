@@ -13,7 +13,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border-2 bg-card text-card-foreground shadow-sm w-[320px] grid grid-rows-[240px_] overflow-hidden m-3",
+      "bg-card text-card-foreground overflow-hidden m-3",
       notoSansJP.className,
       className
     )}
