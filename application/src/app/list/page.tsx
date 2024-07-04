@@ -11,10 +11,12 @@ export default async function List() {
   const gridStyle = "grid grid-cols-auto-fill place-content-center";
   return (
     <>
+      {/* レスポンシブ */}
       <div className="grid grid-cols-[2fr_1fr] gap-4 place-content-center w-full px-3 md:hidden">
         <Search placeholder="店名・ジャンルで検索" data={searchDate} />
         <Select />
       </div>
+      {/* 通常 */}
       <div className="hidden sm:block">
         <div className={clsx(gridStyle, "place-items-end")}>
           <div className="grid-column-end--1 mr-4 hidden md:block">
@@ -25,6 +27,7 @@ export default async function List() {
           <Card data={data} />
         </div>
       </div>
+      {/* レスポンシブ */}
       <div className="block sm:hidden">
         <ResponsiveCard data={data} />
       </div>
