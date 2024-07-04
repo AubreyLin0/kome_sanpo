@@ -6,6 +6,7 @@ import {
   SelectValue,
 } from "@/src/shadcn-ui/select";
 
+//todo:Propsを追加する
 export const Select = () => {
   return (
     <ShadcnSelect>
