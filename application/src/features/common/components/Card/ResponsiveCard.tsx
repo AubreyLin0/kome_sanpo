@@ -55,7 +55,7 @@ export const ResponsiveCard = ({ data }: Props) => {
           {!item.isOpen && (
             <>
               <div className="absolute w-full h-full bg-black opacity-50 rounded-xl"></div>
-              <p className="absolute text-white font-semibold text-[20px] tracking-widest text-center w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <p className="absolute text-white font-semibold text-md tracking-widest text-center w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 営業時間外
               </p>
             </>
