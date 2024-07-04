@@ -76,13 +76,13 @@ const sampleRestaurantData: CardDataType = [
   },
 ];
 
-export const getRestaurantData = () => {
+export const getRestaurantData = async () => {
   // todo:listデータ取得処理を実装する
   // 重い処理
-  for (let i = 0; i < 100000; i += 1) {
-    // do nothing
-    console.log(i);
-  }
+  // for (let i = 0; i < 100000; i += 1) {
+  //   // do nothing
+  //   console.log(i);
+  // }
   noStore();
   return sampleRestaurantData;
 };
