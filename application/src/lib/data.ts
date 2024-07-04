@@ -1,12 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
-
-export async function getUser() {
-  const users = await prisma.user.findMany();
-  return users;
-}
-
+// 実装する際にsrc/apiの配下に移動します
 export const sampleData = [
   {
     id: "1",

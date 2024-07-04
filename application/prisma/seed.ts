@@ -42,7 +42,7 @@ const usersData = [
 
 const restaurantsData = [
   {
-    restaurantId: "test-restaurant-uuid-1",
+    id: "test-restaurant-uuid-1",
     name: "アイフル食堂",
     address: "京都市下京区烏丸通五条上る高砂町381-1",
     phoneNumber: "0753615566",
@@ -52,7 +52,7 @@ const restaurantsData = [
     createdBy: "admin",
   },
   {
-    restaurantId: "test-restaurant-uuid-2",
+    id: "test-restaurant-uuid-2",
     name: "マクドナルド烏丸五条店",
     address: "京都府京都市下京区五条通烏丸東入ル松屋町４１１",
     phoneNumber: "0753532225",
@@ -85,8 +85,8 @@ const seedUsers = async () => {
 const main = async () => {
   console.log(`Start seeding ...`);
 
-  await seedUsers();
   await seedRestaurants();
+  await seedUsers();
 
   console.log(`Seeding finished.`);
 };
