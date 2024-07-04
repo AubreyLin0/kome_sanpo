@@ -1,18 +1,76 @@
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
+
 const usersData = [
   {
-    id: "1",
-    name: "komekun",
-    email: "kome@pj100.biz",
+    googleId: "google_user_1",
+    email: "test@gmail.com",
+    name: "test user",
+    profilePicture: "https://github.com/shadcn.png",
+    reviews: {
+      create: [
+        {
+          restaurantId: "test-restaurant-uuid-1",
+          rating: 5,
+          content: "This is a good restaurant",
+        },
+      ],
+    },
+    savedRestaurants: {
+      create: [
+        {
+          restaurantId: "test-restaurant-uuid-2",
+        },
+      ],
+    },
+    visitedRestaurants: {
+      create: [
+        {
+          restaurantId: "test-restaurant-uuid-1",
+        },
+      ],
+    },
   },
   {
-    id: "2",
-    name: "sanpo",
-    email: "sanpo@pj100.biz",
+    googleId: "google_user_2",
+    email: "test2@gmail.com",
+    name: "test user2",
+    profilePicture: "https://github.com/shadcn.png",
   },
 ];
+
+const restaurantsData = [
+  {
+    restaurantId: "test-restaurant-uuid-1",
+    name: "アイフル食堂",
+    address: "京都市下京区烏丸通五条上る高砂町381-1",
+    phoneNumber: "0753615566",
+    openTime: "11:00",
+    closeTime: "21:00",
+    genre: "和食",
+    createdBy: "admin",
+  },
+  {
+    restaurantId: "test-restaurant-uuid-2",
+    name: "マクドナルド烏丸五条店",
+    address: "京都府京都市下京区五条通烏丸東入ル松屋町４１１",
+    phoneNumber: "0753532225",
+    openTime: "06:00",
+    closeTime: "24:00",
+    genre: "ファーストフード",
+    createdBy: "admin",
+  },
+];
+
+const seedRestaurants = async () => {
+  await prisma.restaurant.deleteMany();
+  for (const restaurant of restaurantsData) {
+    await prisma.restaurant.create({
+      data: restaurant,
+    });
+  }
+};
 
 const seedUsers = async () => {
   await prisma.user.deleteMany();
@@ -28,16 +86,18 @@ const main = async () => {
   console.log(`Start seeding ...`);
 
   await seedUsers();
+  await seedRestaurants();
 
   console.log(`Seeding finished.`);
 };
 
 // 処理開始
 main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
+  .then(async () => {
     await prisma.$disconnect();
+  })
+  .catch(async (event) => {
+    console.error(event);
+    await prisma.$disconnect();
+    process.exit(1);
   });

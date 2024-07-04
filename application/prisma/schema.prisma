@@ -13,12 +13,12 @@ model User {
   googleId         String            @unique
   email            String            @unique
   name             String
-  profilePicture   Bytes?
+  profilePicture   String?
   createdAt        DateTime          @default(dbgenerated("now()"))
   updatedAt        DateTime          @updatedAt
   reviews          Review[]
   savedRestaurants SavedRestaurants[]
-  vistedRestaurants VistedRestaurants[]
+  visitedRestaurants VisitedRestaurants[]
 }
 
 model Restaurant {
@@ -30,11 +30,11 @@ model Restaurant {
   closeTime       String
   genre           String
   images          RestaurantImages[]
-  createdAt       DateTime           @default(dbgenerated("now()"))
-  createdBy       String
   review          Review[]
   savedRestaurants SavedRestaurants[]
-  vistedRestaurants VistedRestaurants[]
+  visitedRestaurants VisitedRestaurants[]
+  createdAt       DateTime           @default(dbgenerated("now()"))
+  createdBy       String
 }
 
 model Review {
@@ -57,11 +57,11 @@ model SavedRestaurants {
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model VistedRestaurants {
+model VisitedRestaurants {
   id           String     @id @default(dbgenerated("gen_random_uuid()"))
   userId       String
   restaurantId String
-  vistedAt       DateTime   @default(dbgenerated("now()"))
+  visitedAt       DateTime   @default(dbgenerated("now()"))
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -69,6 +69,6 @@ model VistedRestaurants {
 model RestaurantImages {
   id           String     @id @default(dbgenerated("gen_random_uuid()"))
   restaurantId String
-  image        Bytes
+  image        String
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
 }
