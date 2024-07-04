@@ -30,7 +30,7 @@ model Restaurant {
   closeTime       String
   genre           String
   images          RestaurantImages[]
-  review          Review[]
+  reviews          Review[]
   savedRestaurants SavedRestaurants[]
   visitedRestaurants VisitedRestaurants[]
   createdAt       DateTime           @default(dbgenerated("now()"))

@@ -32,9 +32,9 @@ export default async function Home() {
             <p className="font-bold">{restaurant.name}</p>
             <p>{restaurant.genre}</p>
             <p>{restaurant.averageRating}</p>
-            {restaurant.review.map((rev) => (
-              <p key={rev.id}>
-                {rev.rating} - {rev.content}
+            {restaurant.reviews.map((review) => (
+              <p key={review.id}>
+                {review.rating} - {review.content}
               </p>
             ))}
           </li>
