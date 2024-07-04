@@ -9,6 +9,11 @@ export default async function List() {
   const data = await getRestaurantData();
   const searchDate = await getSearch();
   const gridStyle = "grid grid-cols-auto-fill place-content-center";
+  // HACK: 現状、loading.tsxでローディングを表示しているため、このコンポーネントの全てがスケルトンローディングになる
+  // そのため、Suspenseを使用してCard/ResponsiveCardのみスケルトンローディングしたい。
+  // ただ、それぞれがClientComponentであるため、Suspenseを使用することができない（useEffectでのローディングは検知できないため）
+  // そのため、Card/ResponsiveCardのローディングを別コンポーネントに切り出し、Suspenseを使用する必要がある
+  // でもコンポーネントの設計的になんか気持ち悪いし、やる気が出ないので保留。
   return (
     <>
       {/* レスポンシブ */}
