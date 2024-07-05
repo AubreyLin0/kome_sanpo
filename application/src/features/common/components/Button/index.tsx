@@ -5,7 +5,8 @@ type Props = {
   children: ReactNode;
   variant?: "default" | "outline";
   className?: string;
-  size?: "default" | "sm" | "lg" | "icon";
+  size?: "default" | "sm" | "lg" | "icon" | "xs";
+  disabled?: boolean;
 };
 
 export const Button = ({
@@ -13,8 +14,14 @@ export const Button = ({
   variant = "default",
   className = "",
   size = "default",
+  disabled = false,
 }: Props) => (
-  <ShadcnButton variant={variant} className={className} size={size}>
+  <ShadcnButton
+    variant={variant}
+    className={className}
+    size={size}
+    disabled={disabled}
+  >
     {children}
   </ShadcnButton>
 );

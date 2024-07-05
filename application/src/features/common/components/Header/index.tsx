@@ -4,7 +4,7 @@ import { Button } from "../Button";
 import { Search } from "../Search";
 import { UserIcon } from "../UserIcon";
 import headerIcon from "@/public/headerIcon.png";
-import { getSearch } from "@/src/lib/data";
+import { getSearch } from "@/src/features/common/lib/data";
 
 export const Header = async () => {
   const searchDate = await getSearch();
@@ -18,8 +18,8 @@ export const Header = async () => {
       />
       <div className="flex items-center justify-end sm:justify-center gap-3 p-3 w-full">
         <Button className="font-semibold">
-          <Plus size="16px" strokeWidth="5px" className="mr-2" />
-          お店を追加
+          <Plus size="16px" strokeWidth="5px" className="sm:mr-2" />
+          <p className="hidden sm:block">お店を追加</p>
         </Button>
         {/* とりあえずshadcnのデフォルトを使用 */}
         <UserIcon src={"https://github.com/shadcn.png"} />

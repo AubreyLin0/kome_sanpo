@@ -57,7 +57,8 @@
     "no-plusplus": "error",
     "no-nested-ternary": "error",
     "no-else-return": "error",
-    "id-length": "warn",
-    "camelcase": "error"
+    "id-length": "warn"
+    // camelcaseのモジュール名がエラーになるので一旦無効化
+    // "camelcase": "error"
   }
 }

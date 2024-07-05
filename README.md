@@ -82,9 +82,10 @@ docker compose down
 3. docker compose build
 4. docker compose up -d
 5. docker container exec -it kome_sanpo_app sh
-6. npx prisma db push
-7. npx prisma db seed
-8. npm run dev
+6. npm install
+7. npx prisma db push
+8. npx prisma db seed
+9. npm run dev
 
 ### 初回以降
 

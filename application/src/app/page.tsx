@@ -1,4 +1,5 @@
-import { getUser } from "@/src/lib/data";
+import Link from "next/link";
+import { getUser } from "@/src/features/common/lib/data";
 
 export default async function Home() {
   const users = await getUser();
@@ -13,6 +14,7 @@ export default async function Home() {
           </li>
         ))}
       </ul>
+      <Link href="/list">list</Link>
     </main>
   );
 }
