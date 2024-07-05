@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { unstable_noStore as noStore } from "next/cache";
-import { CardDataType } from "../features/common/type";
+import { CardDataType } from "../type";
 
 const prisma = new PrismaClient();
 

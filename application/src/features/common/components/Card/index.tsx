@@ -25,12 +25,11 @@ export const Card = ({ data }: Props) => {
     >
       <div className="relative">
         {!item.isOpen && (
-          <>
-            <div className="absolute w-full h-full bg-black opacity-50"></div>
-            <p className="absolute text-white font-semibold text-[20px] tracking-widest text-center w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute w-full h-full bg-gray-950/50 flex items-center justify-center">
+            <p className="text-white font-semibold text-[20px] tracking-widest">
               営業時間外
             </p>
-          </>
+          </div>
         )}
         <Image
           src={sample_soumen}

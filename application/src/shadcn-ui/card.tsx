@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Noto_Sans_JP } from "next/font/google";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/src/features/common/lib/utils";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],

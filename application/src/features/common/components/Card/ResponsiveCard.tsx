@@ -53,12 +53,11 @@ export const ResponsiveCard = ({ data }: Props) => {
         </div>
         <div className="relative h-[120px] w-[120px]">
           {!item.isOpen && (
-            <>
-              <div className="absolute w-full h-full bg-black opacity-50 rounded-xl"></div>
-              <p className="absolute text-white font-semibold text-md tracking-widest text-center w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute w-full h-full bg-gray-950/50 flex items-center justify-center">
+              <p className="text-white font-semibold text-md tracking-widest">
                 営業時間外
               </p>
-            </>
+            </div>
           )}
           <Image
             src={sample_soumen}
