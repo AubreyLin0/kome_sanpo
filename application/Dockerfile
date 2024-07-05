@@ -6,4 +6,3 @@ WORKDIR /app/
 
 # パッケージインストール
 COPY ./package.json /app/
-RUN npm install
