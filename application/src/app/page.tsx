@@ -1,4 +1,4 @@
-import { Link } from "lucide-react";
+import Link from "next/link";
 import { getRestaurants } from "../api/restaurants";
 import { getUser } from "../api/users";
 

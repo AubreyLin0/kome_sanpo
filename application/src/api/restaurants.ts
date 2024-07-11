@@ -8,6 +8,7 @@ export async function getRestaurants() {
       reviews: true,
       savedRestaurants: true,
       visitedRestaurants: true,
+      images: true,
     },
   });
 

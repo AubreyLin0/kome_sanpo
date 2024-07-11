@@ -29,12 +29,12 @@ export default async function List() {
           </div>
         </div>
         <div className="grid grid-cols-auto-fill place-content-center place-items-center">
-          {/* <Card data={data} /> */}
+          <Card data={data} />
         </div>
       </div>
       {/* レスポンシブ */}
       <div className="block sm:hidden">
-        {/* <ResponsiveCard data={data} /> */}
+        <ResponsiveCard data={data} />
       </div>
     </>
   );

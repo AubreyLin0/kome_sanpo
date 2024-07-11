@@ -1,8 +1,17 @@
-export type CardDataType = {
-  title: string;
-  category: string;
-  distance: string;
-  isOpen: boolean;
-  isLiked: boolean;
-  openingTime: string;
-}[];
+import { getRestaurants } from "@/src/api/restaurants";
+
+export type Restaurants = Awaited<ReturnType<typeof getRestaurants>>;
+
+export type CardDataType = Pick<
+  Restaurants[0],
+  | "name"
+  | "genre"
+  | "address"
+  | "openTime"
+  | "closeTime"
+  | "id"
+  | "phoneNumber"
+  | "longitude"
+  | "latitude"
+  | "images"
+>[];

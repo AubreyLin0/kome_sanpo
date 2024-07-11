@@ -50,6 +50,18 @@ const restaurantsData = [
     closeTime: "21:00",
     genre: "和食",
     createdBy: "admin",
+    longitude: 34.9968489,
+    latitude: 135.7593823,
+    // TODO:image保存の仕方を調査
+    // images: {
+    //   create: [
+    //     {
+    //       id: "test-restaurant-image-1",
+    //       image:
+    //         "https://magazine.tabelog.com/uploads/2022/04/640x640_rect_161835568.jpg",
+    //     },
+    //   ],
+    // },
   },
   {
     id: "test-restaurant-uuid-2",
@@ -60,6 +72,16 @@ const restaurantsData = [
     closeTime: "24:00",
     genre: "ファーストフード",
     createdBy: "admin",
+    longitude: 34.9965159,
+    latitude: 135.7573215,
+    // images: {
+    //   create: [
+    //     {
+    //       id: "test-restaurant-image-2",
+    //       image: "https://cpok.tw/wp-content/uploads/2024/01/2.png",
+    //     },
+    //   ],
+    // },
   },
 ];
 
