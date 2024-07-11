@@ -1,3 +1,4 @@
+import { Link } from "lucide-react";
 import { getRestaurants } from "../api/restaurants";
 import { getUser } from "../api/users";
 

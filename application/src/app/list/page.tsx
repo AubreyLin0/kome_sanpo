@@ -1,12 +1,13 @@
 import clsx from "clsx";
+import { getRestaurants } from "@/src/api/restaurants";
 import { Card } from "@/src/features/common/components/Card";
 import { ResponsiveCard } from "@/src/features/common/components/Card/ResponsiveCard";
 import { Search } from "@/src/features/common/components/Search";
 import { Select } from "@/src/features/common/components/Select";
-import { getRestaurantData, getSearch } from "@/src/features/common/lib/data";
+import { getSearch } from "@/src/features/common/lib/data";
 
 export default async function List() {
-  const data = await getRestaurantData();
+  const data = await getRestaurants();
   const searchDate = await getSearch();
   // HACK: 現状、loading.tsxでローディングを表示しているため、このコンポーネントの全てがスケルトンローディングになる
   // そのため、Suspenseを使用してCard/ResponsiveCardのみスケルトンローディングしたい。
@@ -28,12 +29,12 @@ export default async function List() {
           </div>
         </div>
         <div className="grid grid-cols-auto-fill place-content-center place-items-center">
-          <Card data={data} />
+          {/* <Card data={data} /> */}
         </div>
       </div>
       {/* レスポンシブ */}
       <div className="block sm:hidden">
-        <ResponsiveCard data={data} />
+        {/* <ResponsiveCard data={data} /> */}
       </div>
     </>
   );
