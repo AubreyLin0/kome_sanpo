@@ -31,7 +31,10 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        subText: "#A0A0A0",
         mainGray: "#F3F3F3",
+        green: "#309E41",
+        red: "#F05F43",
         text: "#4C4B4B",
         primary: {
           DEFAULT: "#EAC505",
@@ -69,6 +72,10 @@ const config = {
       },
       gridTemplateColumns: {
         "2-4-2": "2fr 4fr 2fr",
+        "auto-fill": "repeat(auto-fill, minmax(340px, 350px))",
+      },
+      gridColumnEnd: {
+        "-1": "-1",
       },
       keyframes: {
         "accordion-down": {

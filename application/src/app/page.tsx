@@ -40,6 +40,7 @@ export default async function Home() {
           </li>
         ))}
       </ul>
+      <Link href="/list">list</Link>
     </main>
   );
 }
