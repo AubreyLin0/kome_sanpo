@@ -31,7 +31,7 @@ model Restaurant {
   genre           String
   latitude        Float?   // apiで住所を取得して、緯度経度を変えてからDBに保存する
   longitude       Float?  
-  images          RestaurantImages[]
+  images          String?
   reviews          Review[]
   savedRestaurants SavedRestaurants[]
   visitedRestaurants VisitedRestaurants[]
@@ -45,6 +45,7 @@ model Review {
   restaurantId String
   content      String
   rating       Int
+  images       ReviewImages[]
   createdAt    DateTime   @default(dbgenerated("now()"))
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -68,9 +69,9 @@ model VisitedRestaurants {
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model RestaurantImages {
-  id           String     @id @default(dbgenerated("gen_random_uuid()"))
-  restaurantId String
-  image        String
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+model ReviewImages {
+  id       String   @id @default(dbgenerated("gen_random_uuid()"))
+  reviewId String
+  imageUrl String
+  review   Review   @relation(fields: [reviewId], references: [id])
 }
