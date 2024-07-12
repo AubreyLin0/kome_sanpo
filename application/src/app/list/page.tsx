@@ -14,7 +14,7 @@ export default async function List() {
   // そのため、Card/ResponsiveCardのローディングを別コンポーネントに切り出し、Suspenseを使用する必要がある
   // でもコンポーネントの設計的になんか気持ち悪いし、やる気が出ないので保留。
   return (
-    <>
+    <div className="max-w-[1400px] m-auto py-6 px-3 md:px-0">
       {/* レスポンシブ */}
       <div className="grid grid-cols-[2fr_1fr] gap-4 place-content-center w-full px-3 md:hidden">
         <Search placeholder="店名・ジャンルで検索" data={searchDate} />
@@ -35,6 +35,6 @@ export default async function List() {
       <div className="block sm:hidden">
         <ResponsiveCard data={data} />
       </div>
-    </>
+    </div>
   );
 }
