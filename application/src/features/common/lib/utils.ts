@@ -17,18 +17,22 @@ export function handleCalculateDistance(lon2: number, lat2: number): number {
   const defaultPosition = { longitude: 34.9968489, latitude: 135.7593823 }; // アイフル本社
   const { latitude: lat1, longitude: lon1 } = defaultPosition;
 
-  const r = 6371; // km
-  const p = Math.PI / 180;
+  const earthRadiusKm = 6371; // km
+  const degreesToRadians = Math.PI / 180;
 
-  const a =
+  const haversineFormulaResult =
     0.5 -
-    Math.cos((lat2 - lat1) * p) / 2 +
-    (Math.cos(lat1 * p) *
-      Math.cos(lat2 * p) *
-      (1 - Math.cos((lon2 - lon1) * p))) /
+    Math.cos((lat2 - lat1) * degreesToRadians) / 2 +
+    (Math.cos(lat1 * degreesToRadians) *
+      Math.cos(lat2 * degreesToRadians) *
+      (1 - Math.cos((lon2 - lon1) * degreesToRadians))) /
       2;
 
-  return parseFloat((2 * r * Math.asin(Math.sqrt(a))).toFixed(1));
+  return parseFloat(
+    (2 * earthRadiusKm * Math.asin(Math.sqrt(haversineFormulaResult))).toFixed(
+      1
+    )
+  );
 }
 
 export function handleCheckIfOpen({
