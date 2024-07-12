@@ -13,5 +13,5 @@ export type CardDataType = Pick<
   | "phoneNumber"
   | "longitude"
   | "latitude"
-  | "images"
+  | "topImageURL"
 >[];

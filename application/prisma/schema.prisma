@@ -31,7 +31,7 @@ model Restaurant {
   genre           String
   latitude        Float?   // apiで住所を取得して、緯度経度を変えてからDBに保存する
   longitude       Float?  
-  images          String?
+  topImageURL          String?
   reviews          Review[]
   savedRestaurants SavedRestaurants[]
   visitedRestaurants VisitedRestaurants[]

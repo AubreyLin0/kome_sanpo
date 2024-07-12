@@ -14,13 +14,7 @@ export default {
         genre: "和食",
         longitude: 34.9968489,
         latitude: 135.7593823,
-        images: [
-          {
-            id: "test-restaurant-image-1",
-            restaurantId: "test-restaurant-uuid-1",
-            image: "@/public/sample_soumen.jpeg",
-          },
-        ],
+        topImageURL: "@/public/sample_soumen.jpeg",
       },
     ],
   },
