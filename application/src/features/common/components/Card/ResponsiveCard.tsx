@@ -1,4 +1,3 @@
-"use client";
 import { clsx } from "clsx";
 import Image from "next/image";
 import { handleCalculateDistance, handleCheckIfOpen } from "../../lib/utils";
@@ -35,27 +34,27 @@ export const ResponsiveCard = ({ data }: Props) => {
                 <Button disabled={true} variant="outline" size="xs">
                   {item.genre}
                 </Button>
-                {/* TODO:fix hydration error */}
-                {/* <p className="text-subText">
-                  {handleCalculateDistance({
-                    targetLatitude: item.latitude ?? 0,
-                    targetLongitude: item.longitude ?? 0,
-                  })}
-                </p> */}
+                <p className="text-subText">
+                  {`${handleCalculateDistance(
+                    item.longitude ?? 0,
+                    item.latitude ?? 0
+                  )} km`}
+                </p>
               </div>
             </CardContent>
             <CardFooter className="w-full pb-0">
               <div className="flex items-center justify-between gap-2 w-full">
                 <p
                   className={clsx("font-bold", {
-                    "text-green": item.openTime,
-                    "text-red": !item.closeTime,
+                    "text-green": isOpen,
+                    "text-red": !isOpen,
                   })}
                 >
-                  {item.openTime ? "営業中" : "営業時間外"}
-                  <br />
-                  <span className="text-text font-normal">
-                    {item.openTime ? "営業終了" : "営業開始"}：{item.openTime}
+                  {isOpen ? "営業中" : "営業時間外"}
+                  <span className="pl-2 text-text font-normal">
+                    {isOpen
+                      ? `営業終了：${item.closeTime}`
+                      : `営業開始：${item.openTime}`}
                   </span>
                 </p>
                 {/* userが保存しているレストランid配列から相応のレストランidが存在しているかどうかで判断する */}
@@ -64,8 +63,7 @@ export const ResponsiveCard = ({ data }: Props) => {
               </div>
             </CardFooter>
           </div>
-          {/* TODO:fix hydration error */}
-          {/* <div className="relative h-[120px] w-[120px]">
+          <div className="relative h-[120px] w-[120px]">
             {!isOpen && (
               <div className="absolute w-full h-full bg-gray-950/50 flex items-center justify-center">
                 <p className="text-white font-semibold text-md tracking-widest">
@@ -78,7 +76,7 @@ export const ResponsiveCard = ({ data }: Props) => {
               alt="sample_tyahan"
               className="h-full object-cover object-center rounded-xl"
             />
-          </div> */}
+          </div>
         </div>
       </ShadcnCard>
     );

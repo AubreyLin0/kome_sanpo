@@ -1,4 +1,3 @@
-"use client";
 import { clsx } from "clsx";
 import Image from "next/image";
 import { handleCalculateDistance, handleCheckIfOpen } from "../../lib/utils";
@@ -27,8 +26,7 @@ export const Card = ({ data }: Props) => {
         key={item.name}
         className="border-2 w-[320px] shadow-md grid grid-rows-[240px_] rounded-lg"
       >
-        {/* TODO:fix hydration error */}
-        {/* <div className="relative">
+        <div className="relative">
           {!isOpen && (
             <div className="absolute w-full h-full bg-gray-950/50 flex items-center justify-center">
               <p className="text-white font-semibold text-[20px] tracking-widest">
@@ -41,7 +39,7 @@ export const Card = ({ data }: Props) => {
             alt="sample_tyahan"
             className="h-full object-cover object-center"
           />
-        </div> */}
+        </div>
         <div className="w-[320px] px-3">
           <CardHeader>
             <CardTitle>{item.name}</CardTitle>
@@ -51,13 +49,12 @@ export const Card = ({ data }: Props) => {
               <Button disabled={true} variant="outline" size="sm">
                 {item.genre}
               </Button>
-              {/* TODO:fix hydration error */}
-              {/* <p className="text-subText">
-                {handleCalculateDistance({
-                  targetLatitude: item.latitude ?? 0,
-                  targetLongitude: item.longitude ?? 0,
-                })}
-              </p> */}
+              <p className="text-subText">
+                {`${handleCalculateDistance(
+                  item.longitude ?? 0,
+                  item.latitude ?? 0
+                )} km`}
+              </p>
             </div>
             {/* userが保存しているレストランid配列から相応のレストランidが存在しているかどうかで判断する */}
             {/* ただ、フェス１はユーザー機能がないので、ここは一旦falseにする */}
@@ -66,14 +63,15 @@ export const Card = ({ data }: Props) => {
           <CardFooter>
             <p
               className={clsx("font-bold", {
-                "text-green": item.openTime,
-                "text-red": !item.closeTime,
+                "text-green": isOpen,
+                "text-red": !isOpen,
               })}
             >
-              {item.openTime ? "営業中" : "営業時間外"}
-              <br />
+              {isOpen ? "営業中" : "営業時間外"}
               <span className="pl-2 text-text font-normal">
-                {item.openTime ? "営業終了" : "営業開始"}：{item.openTime}
+                {isOpen
+                  ? `営業終了：${item.closeTime}`
+                  : `営業開始：${item.openTime}`}
               </span>
             </p>
           </CardFooter>

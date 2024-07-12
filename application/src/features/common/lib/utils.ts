@@ -1,39 +1,34 @@
 import { type ClassValue, clsx } from "clsx";
+import dayjs from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
+import tz from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 import { twMerge } from "tailwind-merge";
+
+dayjs.extend(tz);
+dayjs.extend(utc);
+dayjs.extend(isBetween);
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-export function handleCalculateDistance({
-  targetLatitude,
-  targetLongitude,
-}: {
-  targetLatitude: number;
-  targetLongitude: number;
-}) {
-  const defaultPosition = { latitude: 34.9968489, longitude: 135.7593823 };
-  const { latitude, longitude } = defaultPosition;
 
-  function convertDegreesToRadians(degrees: number) {
-    return (degrees * Math.PI) / 180;
-  }
+export function handleCalculateDistance(lon2: number, lat2: number): number {
+  const defaultPosition = { longitude: 34.9968489, latitude: 135.7593823 }; // アイフル本社
+  const { latitude: lat1, longitude: lon1 } = defaultPosition;
 
-  let earthRadiusKm = 6371; // 地球半径，单位公里
-  let deltaLatitudeRadians = convertDegreesToRadians(targetLatitude - latitude);
-  let deltaLongitudeRadians = convertDegreesToRadians(
-    targetLongitude - longitude
-  );
-  let haversineFormula =
-    Math.sin(deltaLatitudeRadians / 2) * Math.sin(deltaLatitudeRadians / 2) +
-    Math.cos(convertDegreesToRadians(latitude)) *
-      Math.cos(convertDegreesToRadians(targetLatitude)) *
-      Math.sin(deltaLongitudeRadians / 2) *
-      Math.sin(deltaLongitudeRadians / 2);
-  let angularDistanceRadians =
-    2 *
-    Math.atan2(Math.sqrt(haversineFormula), Math.sqrt(1 - haversineFormula));
-  let distanceKm = earthRadiusKm * angularDistanceRadians;
-  return distanceKm;
+  const r = 6371; // km
+  const p = Math.PI / 180;
+
+  const a =
+    0.5 -
+    Math.cos((lat2 - lat1) * p) / 2 +
+    (Math.cos(lat1 * p) *
+      Math.cos(lat2 * p) *
+      (1 - Math.cos((lon2 - lon1) * p))) /
+      2;
+
+  return parseFloat((2 * r * Math.asin(Math.sqrt(a))).toFixed(1));
 }
 
 export function handleCheckIfOpen({
@@ -43,19 +38,17 @@ export function handleCheckIfOpen({
   openTime: string;
   closeTime: string;
 }) {
-  const [openHour, openMinute] = openTime.split(":").map(Number);
-  const [closeHour, closeMinute] = closeTime.split(":").map(Number);
+  const currentTime = dayjs().tz("Asia/Tokyo");
 
-  const now = new Date();
-  const currentHour = now.getHours();
-  const currentMinute = now.getMinutes();
+  // databaseのopenTime, closeTimeはstring型(ex:'06:00')なので、それをdayjsオブジェクトに変換する
+  const openDateTime = dayjs()
+    .tz("Asia/Tokyo")
+    .hour(Number(openTime.split(":")[0]))
+    .minute(Number(openTime.split(":")[1]));
+  const closeDateTime = dayjs()
+    .tz("Asia/Tokyo")
+    .hour(Number(closeTime.split(":")[0]))
+    .minute(Number(closeTime.split(":")[1]));
 
-  const openTotalMinutes = openHour * 60 + openMinute;
-  const closeTotalMinutes = closeHour * 60 + closeMinute;
-  const currentTotalMinutes = currentHour * 60 + currentMinute;
-
-  return (
-    currentTotalMinutes >= openTotalMinutes &&
-    currentTotalMinutes < closeTotalMinutes
-  );
+  return currentTime.isBetween(openDateTime, closeDateTime, "hours", "[]");
 }
