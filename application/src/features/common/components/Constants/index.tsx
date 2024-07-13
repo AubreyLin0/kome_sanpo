@@ -38,11 +38,11 @@ export const Constants = ({
       <div className="flex items-center justify-between">
         <h1 className="text-text text-2xl md:text-3xl font-bold">{title}</h1>
         <div className="flex items-center w-fit">
-          <p className="text-text w-[32px]">編集</p>
+          <p className="text-text w-[32px] font-semibold">編集</p>
           <FilePenLine className="h-5 w-5 text-primary" />
         </div>
       </div>
-      <Button variant="outline" className="my-4">
+      <Button variant="outline" className="my-2 sm:my-4">
         {category}
       </Button>
       <div className="text-subText block md:grid grid-cols-[max-content_auto] gap-x-4">
