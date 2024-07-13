@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { unstable_noStore as noStore } from "next/cache";
-import { CardDataType } from "../type";
+import { CardDataType, RestaurantDetailDataType } from "../type";
 
 const prisma = new PrismaClient();
 
@@ -80,4 +80,21 @@ export const getRestaurantData = async () => {
   // todo:listデータ取得処理を実装する
   noStore();
   return sampleRestaurantData;
+};
+
+const sampleDetailData: RestaurantDetailDataType = {
+  title: "美味しいカツレツカルボナーラ",
+  category: "イタリアン",
+  openingTime: "11:00~14:00",
+  phone: "000-0000-0000",
+  regularHoliday: "水曜日",
+  address: "東京都渋谷区1-22アイフルマンション101号室",
+  imageSrc: "/pasta.jpg",
+};
+
+export const getRestaurantDetailData = async () => {
+  //わざと遅延させる
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  noStore();
+  return sampleDetailData;
 };

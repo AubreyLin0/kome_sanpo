@@ -6,3 +6,13 @@ export type CardDataType = {
   isLiked: boolean;
   openingTime: string;
 }[];
+
+export type RestaurantDetailDataType = {
+  title: string;
+  category: string;
+  openingTime: string;
+  phone: string;
+  regularHoliday: string;
+  address: string;
+  imageSrc: string;
+};
