@@ -1,16 +1,41 @@
 "use client";
-import { APIProvider, Map } from "@vis.gl/react-google-maps";
+import { useState } from "react";
+import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
+import { CardDataType } from "../../type";
+import { Card } from "../Card";
 
-export const GoogleMap = () => {
+type Props = {
+  data: CardDataType;
+};
+
+export const GoogleMap = ({ data }: Props) => {
+  const [isDetail, setIsDetail] = useState<boolean>(false);
   return (
-    <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY as string}>
-      <Map
-        className="h-full w-[100vw]"
-        defaultCenter={{ lat: 22.54992, lng: 0 }}
-        defaultZoom={3}
-        gestureHandling={"greedy"}
-        disableDefaultUI={true}
-      />
-    </APIProvider>
+    <div className="relative h-full w-full">
+      <APIProvider
+        apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY as string}
+      >
+        <Map
+          className="h-full w-full"
+          defaultCenter={{ lat: 34.99682, lng: 135.759258 }}
+          defaultZoom={17}
+          gestureHandling={"greedy"}
+          disableDefaultUI={true}
+        >
+          {data.map((item) => (
+            <Marker
+              key={item.title}
+              position={{ lat: item.latitude, lng: item.longitude }}
+              onClick={() => {
+                setIsDetail(!isDetail);
+              }}
+            />
+          ))}
+        </Map>
+        {isDetail && (
+          <Card data={data} className="absolute top-0 left-0 z-10" />
+        )}
+      </APIProvider>
+    </div>
   );
 };

@@ -15,13 +15,17 @@ import {
 
 type Props = {
   data: CardDataType;
+  className?: string;
 };
 
-export const Card = ({ data }: Props) => {
+export const Card = ({ data, className = "" }: Props) => {
   return data.map((item) => (
     <ShadcnCard
       key={item.title}
-      className="border-2 w-[320px] shadow-md grid grid-rows-[240px_] rounded-lg"
+      className={clsx(
+        "border-2 w-[320px] shadow-md grid grid-rows-[240px_] rounded-lg",
+        className
+      )}
     >
       <div className="relative">
         {!item.isOpen && (

@@ -41,6 +41,8 @@ const sampleRestaurantData: CardDataType = [
     isOpen: true,
     isLiked: false,
     openingTime: "20:00",
+    latitude: 34.9968489,
+    longitude: 135.7593823,
   },
   {
     title: "ペペロンチーノ",
@@ -49,6 +51,8 @@ const sampleRestaurantData: CardDataType = [
     isOpen: false,
     isLiked: true,
     openingTime: "10:00",
+    latitude: 34.9975,
+    longitude: 135.759,
   },
   {
     title: "カンパチ",
@@ -57,6 +61,8 @@ const sampleRestaurantData: CardDataType = [
     isOpen: true,
     isLiked: true,
     openingTime: "23:00",
+    latitude: 34.9965,
+    longitude: 135.7578,
   },
   {
     title: "にく",
@@ -65,6 +71,8 @@ const sampleRestaurantData: CardDataType = [
     isOpen: false,
     isLiked: false,
     openingTime: "10:00",
+    latitude: 34.9982,
+    longitude: 135.7569,
   },
   {
     title: "たい",
@@ -73,6 +81,8 @@ const sampleRestaurantData: CardDataType = [
     isOpen: true,
     isLiked: false,
     openingTime: "23:00",
+    latitude: 34.997,
+    longitude: 135.7581,
   },
 ];
 

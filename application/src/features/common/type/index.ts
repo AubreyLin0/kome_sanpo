@@ -5,4 +5,6 @@ export type CardDataType = {
   isOpen: boolean;
   isLiked: boolean;
   openingTime: string;
+  longitude: number;
+  latitude: number;
 }[];
