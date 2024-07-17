@@ -1,5 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-import { update } from "react-spring";
+import { Genre, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -49,7 +48,7 @@ const restaurantsData = [
     phoneNumber: "0753615566",
     openTime: "11:00",
     closeTime: "21:00",
-    genre: "和食",
+    genre: "JAPANESE" as Genre,
     createdBy: "admin",
     longitude: 34.9968489,
     latitude: 135.7593823,
@@ -72,7 +71,7 @@ const restaurantsData = [
     phoneNumber: "0753532225",
     openTime: "06:00",
     closeTime: "24:00",
-    genre: "ファーストフード",
+    genre: "FAST_FOOD" as Genre,
     createdBy: "admin",
     longitude: 34.9965159,
     latitude: 135.7573215,

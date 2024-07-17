@@ -29,7 +29,7 @@ model Restaurant {
   openTime           String
   closeTime          String
   closedDays         String[]
-  genre              String
+  genre              Genre                @default(JAPANESE)
   latitude           Float? // apiで住所を取得して、緯度経度を変えてからDBに保存する
   longitude          Float?
   topBannerImage     String?
@@ -77,4 +77,17 @@ model ReviewImages {
   reviewId String
   imageUrl String
   review   Review @relation(fields: [reviewId], references: [id])
+}
+
+enum Genre {
+  JAPANESE
+  WESTERN
+  CHINESE
+  FAST_FOOD
+  CURRY
+  RAMEN
+  SUSHI
+  SET_MEAL
+  TONKATSU
+  OTHER
 }

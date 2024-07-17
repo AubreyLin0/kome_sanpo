@@ -15,3 +15,15 @@ export type CardDataType = Pick<
   | "latitude"
   | "topBannerImage"
 >[];
+
+export type Genre =
+  | "JAPANESE"
+  | "WESTERN"
+  | "CHINESE"
+  | "FAST_FOOD"
+  | "CURRY"
+  | "RAMEN"
+  | "SUSHI"
+  | "SET_MEAL"
+  | "TONKATSU"
+  | "OTHER";

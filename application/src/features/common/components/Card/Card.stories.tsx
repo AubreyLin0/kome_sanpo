@@ -11,7 +11,7 @@ export default {
         phoneNumber: "0753615566",
         openTime: "11:00",
         closeTime: "21:00",
-        genre: "和食",
+        genre: "JAPANESE",
         longitude: 34.9968489,
         latitude: 135.7593823,
         topBannerImage: "@/public/sample_soumen.jpeg",

@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import Image from "next/image";
+import { RESTAURANT_GENRE } from "../../constants";
 import { handleCalculateDistance, handleCheckIfOpen } from "../../lib/utils";
 import { CardDataType } from "../../type";
 import { Button } from "../Button";
@@ -47,7 +48,7 @@ export const Card = ({ data }: Props) => {
           <CardContent>
             <div className="flex items-center gap-2">
               <Button disabled={true} variant="outline" size="sm">
-                {item.genre}
+                {RESTAURANT_GENRE.get(item.genre)}
               </Button>
               <p className="text-subText">
                 {`${handleCalculateDistance(
