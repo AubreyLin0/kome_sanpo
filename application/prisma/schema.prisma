@@ -9,55 +9,55 @@ datasource db {
 }
 
 model User {
-  id               String            @id @default(dbgenerated("gen_random_uuid()"))
-  googleId         String            @unique
-  email            String            @unique
-  name             String
-  profilePicture   String?
-  createdAt        DateTime          @default(dbgenerated("now()"))
-  updatedAt        DateTime          @updatedAt
-  reviews          Review[]
-  savedRestaurants SavedRestaurants[]
+  id                 String               @id @default(dbgenerated("gen_random_uuid()"))
+  googleId           String               @unique
+  email              String               @unique
+  name               String
+  profileImage       String?
+  createdAt          DateTime             @default(dbgenerated("now()"))
+  updatedAt          DateTime             @updatedAt
+  reviews            Review[]
+  savedRestaurants   SavedRestaurants[]
   visitedRestaurants VisitedRestaurants[]
 }
 
 model Restaurant {
-  id              String             @id @default(dbgenerated("gen_random_uuid()"))
-  name            String             @unique
-  address         String             @unique
-  phoneNumber     String             @unique
-  openTime        String
-  closeTime       String
-  genre           String
-  latitude        Float?   // apiで住所を取得して、緯度経度を変えてからDBに保存する
-  longitude       Float?  
-  topImageURL          String?
-  reviews          Review[]
-  savedRestaurants SavedRestaurants[]
+  id                 String               @id @default(dbgenerated("gen_random_uuid()"))
+  name               String               @unique
+  address            String               @unique
+  phoneNumber        String               @unique
+  openTime           String
+  closeTime          String
+  genre              String
+  latitude           Float? // apiで住所を取得して、緯度経度を変えてからDBに保存する
+  longitude          Float?
+  topBannerImage     String?
+  reviews            Review[]
+  savedRestaurants   SavedRestaurants[]
   visitedRestaurants VisitedRestaurants[]
-  createdAt       DateTime           @default(dbgenerated("now()"))
-  createdBy       String
-  updatedAt       DateTime          @updatedAt
-  updatedBy       String
+  createdAt          DateTime             @default(dbgenerated("now()"))
+  createdBy          String
+  updatedAt          DateTime             @updatedAt
+  updatedBy          String
 }
 
 model Review {
-  id           String     @id @default(dbgenerated("gen_random_uuid()"))
+  id           String         @id @default(dbgenerated("gen_random_uuid()"))
   userId       String
   restaurantId String
   content      String
   rating       Int
   images       ReviewImages[]
-  createdAt    DateTime   @default(dbgenerated("now()"))
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
-  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime       @default(dbgenerated("now()"))
+  restaurant   Restaurant     @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model SavedRestaurants {
   id           String     @id @default(dbgenerated("gen_random_uuid()"))
   userId       String
   restaurantId String
-  savedAt    DateTime   @default(dbgenerated("now()"))
+  savedAt      DateTime   @default(dbgenerated("now()"))
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -66,14 +66,14 @@ model VisitedRestaurants {
   id           String     @id @default(dbgenerated("gen_random_uuid()"))
   userId       String
   restaurantId String
-  visitedAt       DateTime   @default(dbgenerated("now()"))
+  visitedAt    DateTime   @default(dbgenerated("now()"))
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model ReviewImages {
-  id       String   @id @default(dbgenerated("gen_random_uuid()"))
+  id       String @id @default(dbgenerated("gen_random_uuid()"))
   reviewId String
   imageUrl String
-  review   Review   @relation(fields: [reviewId], references: [id])
+  review   Review @relation(fields: [reviewId], references: [id])
 }
