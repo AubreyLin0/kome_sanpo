@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { update } from "react-spring";
 
 const prisma = new PrismaClient();
 
@@ -52,6 +53,7 @@ const restaurantsData = [
     createdBy: "admin",
     longitude: 34.9968489,
     latitude: 135.7593823,
+    updatedBy: "admin",
     // TODO:image保存の仕方を調査
     // images: {
     //   create: [
@@ -74,6 +76,7 @@ const restaurantsData = [
     createdBy: "admin",
     longitude: 34.9965159,
     latitude: 135.7573215,
+    updatedBy: "admin",
     // images: {
     //   create: [
     //     {
