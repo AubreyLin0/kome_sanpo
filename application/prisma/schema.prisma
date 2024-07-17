@@ -37,6 +37,8 @@ model Restaurant {
   visitedRestaurants VisitedRestaurants[]
   createdAt       DateTime           @default(dbgenerated("now()"))
   createdBy       String
+  updatedAt       DateTime          @updatedAt
+  updatedBy       String
 }
 
 model Review {
