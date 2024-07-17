@@ -1,5 +1,4 @@
-import clsx from "clsx";
-import { getRestaurants } from "@/src/api/restaurants";
+import { getRestaurants } from "@/src/data/restaurants";
 import { Card } from "@/src/features/common/components/Card";
 import { ResponsiveCard } from "@/src/features/common/components/Card/ResponsiveCard";
 import { Search } from "@/src/features/common/components/Search";

@@ -1,4 +1,4 @@
-import { getRestaurants } from "@/src/api/restaurants";
+import { getRestaurants } from "@/src/data/restaurants";
 
 export type Restaurants = Awaited<ReturnType<typeof getRestaurants>>;
 
