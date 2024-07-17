@@ -14,7 +14,7 @@ export default {
         genre: "和食",
         longitude: 34.9968489,
         latitude: 135.7593823,
-        topImageURL: "@/public/sample_soumen.jpeg",
+        topBannerImage: "@/public/sample_soumen.jpeg",
       },
     ],
   },
