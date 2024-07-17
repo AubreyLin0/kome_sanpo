@@ -28,6 +28,7 @@ model Restaurant {
   phoneNumber        String               @unique
   openTime           String
   closeTime          String
+  closedDays         String[]
   genre              String
   latitude           Float? // apiで住所を取得して、緯度経度を変えてからDBに保存する
   longitude          Float?
