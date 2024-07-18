@@ -16,7 +16,7 @@ export async function getUser() {
       reviews: {
         include: restaurantName,
       },
-      savedRestaurants: {
+      favoriteRestaurants: {
         include: restaurantName,
       },
       visitedRestaurants: {
