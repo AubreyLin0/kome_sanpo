@@ -6,7 +6,7 @@ export async function getRestaurants() {
   const restaurants = await prisma.restaurant.findMany({
     include: {
       reviews: true,
-      savedRestaurants: true,
+      favoriteRestaurants: true,
       visitedRestaurants: true,
     },
   });
