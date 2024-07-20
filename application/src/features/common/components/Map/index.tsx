@@ -1,15 +1,25 @@
 "use client";
-import { useState } from "react";
-import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
+import {
+  AdvancedMarker,
+  APIProvider,
+  Map,
+  Pin,
+  MapCameraProps,
+  MapCameraChangedEvent,
+} from "@vis.gl/react-google-maps";
 import { CardDataType } from "../../type";
-import { Card } from "../Card";
 
 type Props = {
   data: CardDataType;
+  mapCameraPosition: MapCameraProps;
+  onCameraChanged?: (event: MapCameraChangedEvent) => void;
 };
 
-export const GoogleMap = ({ data }: Props) => {
-  const [isDetail, setIsDetail] = useState<boolean>(false);
+export const GoogleMap = ({
+  data,
+  mapCameraPosition,
+  onCameraChanged,
+}: Props) => {
   return (
     <div className="relative h-full w-full">
       <APIProvider
@@ -19,22 +29,25 @@ export const GoogleMap = ({ data }: Props) => {
           className="h-full w-full"
           defaultCenter={{ lat: 34.99682, lng: 135.759258 }}
           defaultZoom={17}
+          {...mapCameraPosition}
+          onCameraChanged={onCameraChanged}
           gestureHandling={"greedy"}
           disableDefaultUI={true}
+          mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID as string}
         >
           {data.map((item) => (
-            <Marker
+            <AdvancedMarker
               key={item.title}
               position={{ lat: item.latitude, lng: item.longitude }}
-              onClick={() => {
-                setIsDetail(!isDetail);
-              }}
-            />
+            >
+              <Pin
+                background={"#EAC505"}
+                borderColor={"black"}
+                glyphColor={"black"}
+              />
+            </AdvancedMarker>
           ))}
         </Map>
-        {isDetail && (
-          <Card data={data} className="absolute top-0 left-0 z-10" />
-        )}
       </APIProvider>
     </div>
   );
