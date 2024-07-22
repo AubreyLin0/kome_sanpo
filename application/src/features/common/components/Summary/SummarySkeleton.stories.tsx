@@ -1,4 +1,4 @@
-import { ConstantsSkeleton as Component } from "./ConstantsSkeleton";
+import { SummarySkeleton as Component } from "./SummarySkeleton";
 import type { Meta, StoryObj } from "@storybook/react";
 export default {
   component: Component,

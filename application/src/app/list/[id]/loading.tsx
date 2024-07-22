@@ -1,14 +1,12 @@
-import { ConstantsSkeleton } from "@/src/features/common/components/Constants/ConstantsSkeleton";
+import { SummarySkeleton } from "@/src/features/common/components/Summary/SummarySkeleton";
 import { Skeleton } from "@/src/shadcn-ui/skeleton";
 
 export default function Loading() {
   return (
     <>
-      <div className="relative w-full h-[30vh]">
-        <Skeleton className="w-full h-full" />
-      </div>
+      <Skeleton className="relative h-[30vh] w-full" />
       <div className="m-4 sm:mx-16 sm:my-8">
-        <ConstantsSkeleton />
+        <SummarySkeleton />
       </div>
     </>
   );

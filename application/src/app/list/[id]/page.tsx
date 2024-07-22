@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Constants } from "@/src/features/common/components/Constants";
+import { Constants } from "@/src/features/common/components/Summary";
 import { getRestaurantDetailData } from "@/src/features/common/lib/data";
 
 export default async function DetailList() {
