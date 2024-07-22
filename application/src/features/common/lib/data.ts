@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { unstable_noStore as noStore } from "next/cache";
-import { CardDataType, RestaurantDetailDataType } from "../type";
+import { CardType, RestaurantDetailDataType } from "../type";
 
 const prisma = new PrismaClient();
 
@@ -9,6 +9,7 @@ export async function getUser() {
   return users;
 }
 
+// apiの処理はapiフォルダーにまとめます
 export const sampleData = [
   {
     id: "1",
@@ -33,7 +34,7 @@ export const getSearch = async () => {
   return sampleData;
 };
 
-const sampleRestaurantData: CardDataType = [
+const sampleRestaurantData: CardType = [
   {
     title: "美味しいチャーハンと唐揚げと餃子のお店",
     category: "中華",
