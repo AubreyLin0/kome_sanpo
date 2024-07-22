@@ -6,6 +6,12 @@ import { handleCalculateDistance, handleCheckIfOpen } from "../../lib/utils";
 import { CardDataType } from "../../type";
 import { Button } from "../Button";
 import { LikeButton } from "../LikeButton";
+import {
+  CLOSING_TIME,
+  COMMENCEMENT_OF_BUSINESS,
+  OPENING,
+  OUTSIDE_BUSINESS_HOURS,
+} from "./constants";
 import sample_soumen from "@/public/sample_soumen.jpeg";
 import {
   Card as ShadcnCard,
@@ -53,11 +59,11 @@ export const ResponsiveCard = ({ data }: Props) => {
                       "text-red": !isOpen,
                     })}
                   >
-                    {isOpen ? "営業中" : "営業時間外"}
+                    {isOpen ? OPENING : OUTSIDE_BUSINESS_HOURS}
                     <span className="pl-2 text-text font-normal">
                       {isOpen
-                        ? `営業終了：${item.closeTime}`
-                        : `営業開始：${item.openTime}`}
+                        ? `${CLOSING_TIME}：${item.closeTime}`
+                        : `${COMMENCEMENT_OF_BUSINESS}：${item.openTime}`}
                     </span>
                   </p>
                   {/* userが保存しているレストランid配列から相応のレストランidが存在しているかどうかで判断する */}
@@ -70,7 +76,7 @@ export const ResponsiveCard = ({ data }: Props) => {
               {!isOpen && (
                 <div className="absolute w-full h-full bg-gray-950/50 flex items-center justify-center">
                   <p className="text-white font-semibold text-md tracking-widest">
-                    営業時間外
+                    {OUTSIDE_BUSINESS_HOURS}
                   </p>
                 </div>
               )}
