@@ -1,4 +1,4 @@
-import { Constants as Component } from ".";
+import { Context as Component } from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {

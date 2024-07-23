@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Constants } from "@/src/features/common/components/Summary";
+import { Context } from "@/src/features/common/components/Context";
 import { getRestaurantDetailData } from "@/src/features/common/lib/data";
 
 export default async function DetailList() {
@@ -16,7 +16,7 @@ export default async function DetailList() {
         />
       </div>
       <div className="m-4 sm:mx-16 sm:my-8">
-        <Constants
+        <Context
           title={data.title}
           category={data.category}
           openingTime={data.openingTime}
