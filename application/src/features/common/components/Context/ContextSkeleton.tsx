@@ -11,7 +11,7 @@ const SubContextSkeleton = () => {
 
 export const ContextSkeleton = () => {
   return (
-    <div>
+    <>
       <div className="flex items-center justify-between">
         <Skeleton className="w-[60vw] md:h-[36px] h-[30px]" />
         <div className="flex items-center w-fit">
@@ -26,6 +26,6 @@ export const ContextSkeleton = () => {
         <SubContextSkeleton />
         <SubContextSkeleton />
       </div>
-    </div>
+    </>
   );
 };

@@ -1,9 +1,9 @@
-import { getRestaurants } from "@/src/data/restaurants";
 import { Card } from "@/src/features/common/components/Card";
 import { ResponsiveCard } from "@/src/features/common/components/Card/ResponsiveCard";
 import { Search } from "@/src/features/common/components/Search";
 import { Select } from "@/src/features/common/components/Select";
-import { getSearch } from "@/src/features/common/lib/data";
+import { getRestaurants } from "@/src/features/common/lib/data/restaurants";
+import { getSearch } from "@/src/features/common/lib/data/sample";
 
 export default async function List() {
   const data = await getRestaurants();

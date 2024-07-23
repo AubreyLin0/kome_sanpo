@@ -1,12 +1,3 @@
-export type CardType = {
-  title: string;
-  category: string;
-  distance: string;
-  isOpen: boolean;
-  isLiked: boolean;
-  openingTime: string;
-}[];
-
 export type RestaurantDetailDataType = {
   title: string;
   category: string;
@@ -16,7 +7,7 @@ export type RestaurantDetailDataType = {
   address: string;
   imageSrc: string;
 };
-import { getRestaurants } from "@/src/data/restaurants";
+import { getRestaurants } from "@/src/features/common/lib/data/restaurants";
 
 export type Restaurants = Awaited<ReturnType<typeof getRestaurants>>;
 

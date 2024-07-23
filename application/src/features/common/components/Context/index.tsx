@@ -34,7 +34,7 @@ export const Context = ({
   address,
 }: Props) => {
   return (
-    <div>
+    <>
       <div className="flex items-center justify-between">
         <h1 className="text-text text-2xl md:text-3xl font-bold">{title}</h1>
         <div className="flex items-center w-fit">
@@ -59,6 +59,6 @@ export const Context = ({
           <MapPin className="h-5 w-5" />
         </SubText>
       </div>
-    </div>
+    </>
   );
 };
