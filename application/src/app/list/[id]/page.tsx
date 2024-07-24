@@ -1,6 +1,6 @@
 import Image from "next/image";
+import { getRestaurantDetailData } from "@/src/data/sample";
 import { Context } from "@/src/features/common/components/Context";
-import { getRestaurantDetailData } from "@/src/features/common/lib/data/sample";
 
 export default async function DetailList() {
   const data = await getRestaurantDetailData();

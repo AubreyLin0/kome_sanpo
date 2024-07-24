@@ -1,6 +1,6 @@
 import { Search as Component } from ".";
 import type { Meta, StoryObj } from "@storybook/react";
-import { sampleData } from "@/src/features/common/lib/data/sample";
+import { sampleData } from "@/src/data/sample";
 
 export default {
   component: Component,

@@ -4,7 +4,7 @@ import { Button } from "../Button";
 import { Search } from "../Search";
 import { UserIcon } from "../UserIcon";
 import headerIcon from "@/public/headerIcon.png";
-import { getSearch } from "@/src/features/common/lib/data/sample";
+import { getSearch } from "@/src/data/sample";
 
 export const Header = async () => {
   const searchDate = await getSearch();

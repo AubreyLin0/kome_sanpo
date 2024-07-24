@@ -7,7 +7,7 @@ export type RestaurantDetailDataType = {
   address: string;
   imageSrc: string;
 };
-import { getRestaurants } from "@/src/features/common/lib/data/restaurants";
+import { getRestaurants } from "@/src/data/restaurants";
 
 export type Restaurants = Awaited<ReturnType<typeof getRestaurants>>;
 
