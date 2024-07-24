@@ -1,13 +1,17 @@
 "use client";
+import { useState } from "react";
 import {
   AdvancedMarker,
   APIProvider,
   Map,
-  Pin,
   MapCameraProps,
   MapCameraChangedEvent,
 } from "@vis.gl/react-google-maps";
+import Image from "next/image";
+import { useSpring, animated } from "react-spring";
 import { CardDataType } from "../../type";
+import location_pin from "@/public/location_pin.png";
+import lunch_pin from "@/public/pin_icon.png";
 
 type Props = {
   data: CardDataType;
@@ -20,6 +24,17 @@ export const GoogleMap = ({
   mapCameraPosition,
   onCameraChanged,
 }: Props) => {
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+
+  const heartAnimation = useSpring({
+    transform: isClicked ? "scale(1.2)" : "scale(1)",
+    config: { tension: 300, friction: 10 },
+  });
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
+
   return (
     <div className="relative h-full w-full">
       <APIProvider
@@ -39,12 +54,23 @@ export const GoogleMap = ({
             <AdvancedMarker
               key={item.title}
               position={{ lat: item.latitude, lng: item.longitude }}
+              clickable={true}
+              onClick={handleClick}
             >
-              <Pin
-                background={"#EAC505"}
-                borderColor={"black"}
-                glyphColor={"black"}
-              />
+              <animated.button style={heartAnimation}>
+                {isClicked ? (
+                  <button>
+                    <Image
+                      src={location_pin}
+                      alt={`${item.title}_location_pin`}
+                    />
+                  </button>
+                ) : (
+                  <button>
+                    <Image src={lunch_pin} alt={`${item.title}_lunch_pin`} />
+                  </button>
+                )}
+              </animated.button>
             </AdvancedMarker>
           ))}
         </Map>
