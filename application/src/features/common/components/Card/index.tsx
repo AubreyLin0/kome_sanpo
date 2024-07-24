@@ -30,7 +30,7 @@ export const Card = ({ data }: Props) => {
     const { openTime, closeTime } = item;
     const isOpen = handleCheckIfOpen({ openTime, closeTime });
     return (
-      <Link key={item.id} href={"/list/1"}>
+      <Link key={item.id} href={`/list/${item.id}`}>
         <ShadcnCard className="border-2 w-[320px] shadow-md grid grid-rows-[240px_] rounded-lg">
           <div className="relative">
             {!isOpen && (

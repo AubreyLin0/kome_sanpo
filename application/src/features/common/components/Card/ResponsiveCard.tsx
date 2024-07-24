@@ -31,7 +31,7 @@ export const ResponsiveCard = ({ data }: Props) => {
     const isOpen = handleCheckIfOpen({ openTime, closeTime });
 
     return (
-      <Link key={item.id} href={"list/1"}>
+      <Link key={item.id} href={`/list/${item.id}`}>
         <ShadcnCard className="border-b-2 text-sm">
           <CardHeader>
             <CardTitle>{item.name}</CardTitle>
