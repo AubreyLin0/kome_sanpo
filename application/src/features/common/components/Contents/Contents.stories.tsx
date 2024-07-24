@@ -1,4 +1,4 @@
-import { Context as Component } from ".";
+import { Contents as Component } from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {

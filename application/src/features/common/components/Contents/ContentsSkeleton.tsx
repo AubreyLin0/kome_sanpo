@@ -1,6 +1,6 @@
 import { Skeleton } from "@/src/shadcn-ui/skeleton";
 
-const SubContextSkeleton = () => {
+const SubContentsSkeleton = () => {
   return (
     <div className="flex items-center w-fir">
       <Skeleton className="w-6 h-6" />
@@ -9,7 +9,7 @@ const SubContextSkeleton = () => {
   );
 };
 
-export const ContextSkeleton = () => {
+export const ContentsSkeleton = () => {
   return (
     <>
       <div className="flex items-center justify-between">
@@ -21,10 +21,10 @@ export const ContextSkeleton = () => {
       </div>
       <Skeleton className="h-[25px] px-3 sm:h-[35px] sm:text-sm md:h-[40px] md:px-5 my-2 sm:my-4 w-[100px]" />
       <div className="flex flex-col md:grid grid-cols-[max-content_auto] gap-x-4 gap-y-1">
-        <SubContextSkeleton />
-        <SubContextSkeleton />
-        <SubContextSkeleton />
-        <SubContextSkeleton />
+        <SubContentsSkeleton />
+        <SubContentsSkeleton />
+        <SubContentsSkeleton />
+        <SubContentsSkeleton />
       </div>
     </>
   );

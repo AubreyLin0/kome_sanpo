@@ -25,7 +25,7 @@ type Props = {
   address: string;
 };
 
-export const Context = ({
+export const Contents = ({
   title,
   category,
   openingTime,

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getRestaurantDetailData } from "@/src/data/sample";
-import { Context } from "@/src/features/common/components/Context";
+import { Contents } from "@/src/features/common/components/Contents";
 
 export default async function DetailList() {
   const data = await getRestaurantDetailData();
@@ -16,7 +16,7 @@ export default async function DetailList() {
         />
       </div>
       <div className="m-4 sm:mx-16 sm:my-8">
-        <Context
+        <Contents
           title={data.title}
           category={data.category}
           openingTime={data.openingTime}

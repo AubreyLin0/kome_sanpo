@@ -1,4 +1,4 @@
-import { ContextSkeleton as Component } from "./ContextSkeleton";
+import { ContentsSkeleton as Component } from "./ContentsSkeleton";
 import type { Meta, StoryObj } from "@storybook/react";
 export default {
   component: Component,
