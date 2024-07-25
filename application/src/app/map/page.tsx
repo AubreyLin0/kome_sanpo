@@ -1,7 +1,7 @@
 import { MapTemplate } from "./MapTemplate";
-import { getRestaurantData } from "@/src/features/common/lib/data";
+import { getRestaurants } from "@/src/data/restaurants";
 
 export default async function Map() {
-  const data = await getRestaurantData();
+  const data = await getRestaurants();
   return <MapTemplate data={data} />;
 }

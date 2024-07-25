@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import clsx from "clsx";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useSpring, animated } from "react-spring";
@@ -19,7 +19,10 @@ export const LikeButton = ({ initialIsLiked }: Props) => {
     config: { tension: 300, friction: 10 },
   });
 
-  const handleLike = () => {
+  const handleLike = (
+    event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    event.preventDefault();
     setIsLiked(!isLiked);
     // todo:server action
   };
@@ -28,7 +31,10 @@ export const LikeButton = ({ initialIsLiked }: Props) => {
 
   return (
     <div className="flex items-center justify-center pr-1">
-      <animated.button style={heartAnimation} onClick={handleLike}>
+      <animated.button
+        style={heartAnimation}
+        onClick={(event) => handleLike(event)}
+      >
         {isLiked ? (
           <IoMdHeart className={clsx("text-primary", LikeButtonStyle)} />
         ) : (

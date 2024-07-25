@@ -52,8 +52,8 @@ export const GoogleMap = ({
         >
           {data.map((item) => (
             <AdvancedMarker
-              key={item.title}
-              position={{ lat: item.latitude, lng: item.longitude }}
+              key={item.id}
+              position={{ lat: item.latitude || 0, lng: item.longitude || 0 }}
               clickable={true}
               onClick={handleClick}
             >
@@ -62,12 +62,12 @@ export const GoogleMap = ({
                   <button>
                     <Image
                       src={location_pin}
-                      alt={`${item.title}_location_pin`}
+                      alt={`${item.name}_location_pin`}
                     />
                   </button>
                 ) : (
                   <button>
-                    <Image src={lunch_pin} alt={`${item.title}_lunch_pin`} />
+                    <Image src={lunch_pin} alt={`${item.name}_lunch_pin`} />
                   </button>
                 )}
               </animated.button>
