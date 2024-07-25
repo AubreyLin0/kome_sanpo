@@ -1,4 +1,5 @@
-import { Genre, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import { Genre } from "@/src/features/common/type";
 
 const prisma = new PrismaClient();
 

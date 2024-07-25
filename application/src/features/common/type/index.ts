@@ -1,3 +1,12 @@
+export type RestaurantDetailDataType = {
+  title: string;
+  category: string;
+  openingTime: string;
+  phone: string;
+  regularHoliday: string;
+  address: string;
+  imageSrc: string;
+};
 import { getRestaurants } from "@/src/data/restaurants";
 
 export type Restaurants = Awaited<ReturnType<typeof getRestaurants>>;
