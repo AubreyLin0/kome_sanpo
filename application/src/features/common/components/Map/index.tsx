@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import {
   AdvancedMarker,
   APIProvider,
@@ -7,34 +6,25 @@ import {
   MapCameraProps,
   MapCameraChangedEvent,
 } from "@vis.gl/react-google-maps";
-import Image from "next/image";
-import { useSpring, animated } from "react-spring";
 import { CardDataType } from "../../type";
-import location_pin from "@/public/location_pin.png";
-import lunch_pin from "@/public/pin_icon.png";
+import { Pin } from "../Pin";
 
 type Props = {
   data: CardDataType;
   mapCameraPosition: MapCameraProps;
   onCameraChanged?: (event: MapCameraChangedEvent) => void;
+  onClick: (e: google.maps.MapMouseEvent) => void;
+  isClicked: boolean;
+  selectedLatLng: { lat?: number | null; lng?: number | null };
 };
 
-export const GoogleMap = ({
+const GoogleMap = ({
   data,
   mapCameraPosition,
   onCameraChanged,
+  onClick,
+  selectedLatLng,
 }: Props) => {
-  const [isClicked, setIsClicked] = useState<boolean>(false);
-
-  const heartAnimation = useSpring({
-    transform: isClicked ? "scale(1.2)" : "scale(1)",
-    config: { tension: 300, friction: 10 },
-  });
-
-  const handleClick = () => {
-    setIsClicked(!isClicked);
-  };
-
   return (
     <div className="relative h-full w-full">
       <APIProvider
@@ -53,24 +43,14 @@ export const GoogleMap = ({
           {data.map((item) => (
             <AdvancedMarker
               key={item.id}
-              position={{ lat: item.latitude || 0, lng: item.longitude || 0 }}
+              // なぜか緯度と経度が逆になっているので、逆に設定
+              position={{ lat: item.longitude || 0, lng: item.latitude || 0 }}
               clickable={true}
-              onClick={handleClick}
+              onClick={(e) => {
+                onClick(e);
+              }}
             >
-              <animated.button style={heartAnimation}>
-                {isClicked ? (
-                  <button>
-                    <Image
-                      src={location_pin}
-                      alt={`${item.name}_location_pin`}
-                    />
-                  </button>
-                ) : (
-                  <button>
-                    <Image src={lunch_pin} alt={`${item.name}_lunch_pin`} />
-                  </button>
-                )}
-              </animated.button>
+              <Pin selectedLng={selectedLatLng.lng} lng={item.latitude} />
             </AdvancedMarker>
           ))}
         </Map>
@@ -78,3 +58,5 @@ export const GoogleMap = ({
     </div>
   );
 };
+
+export default GoogleMap;
