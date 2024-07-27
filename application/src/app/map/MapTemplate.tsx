@@ -21,7 +21,7 @@ export const MapTemplate = ({ data }: Props) => {
     lat?: number | null;
     lng?: number | null;
   }>({ lat: null, lng: null });
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+
   return (
     <div className="flex w-[100vw] h-[90vh]">
       <div className="w-[40vw] overflow-y-scroll">
@@ -39,15 +39,13 @@ export const MapTemplate = ({ data }: Props) => {
         onCameraChanged={(event) => {
           setMapCameraPosition(event.detail);
         }}
-        onClick={(e) => {
+        onClick={(event) => {
           setSelectedLatLng({
-            lat: e.latLng?.lat(),
-            lng: e.latLng?.lng(),
+            lat: event.latLng?.lat(),
+            lng: event.latLng?.lng(),
           });
-          setIsClicked(!isClicked);
         }}
         selectedLatLng={selectedLatLng}
-        isClicked={isClicked}
       />
     </div>
   );

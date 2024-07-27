@@ -14,7 +14,6 @@ type Props = {
   mapCameraPosition: MapCameraProps;
   onCameraChanged?: (event: MapCameraChangedEvent) => void;
   onClick: (e: google.maps.MapMouseEvent) => void;
-  isClicked: boolean;
   selectedLatLng: { lat?: number | null; lng?: number | null };
 };
 
@@ -46,9 +45,7 @@ const GoogleMap = ({
               // なぜか緯度と経度が逆になっているので、逆に設定
               position={{ lat: item.longitude || 0, lng: item.latitude || 0 }}
               clickable={true}
-              onClick={(e) => {
-                onClick(e);
-              }}
+              onClick={onClick}
             >
               <Pin selectedLng={selectedLatLng.lng} lng={item.latitude} />
             </AdvancedMarker>
