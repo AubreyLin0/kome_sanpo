@@ -1,10 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Pin as GooglePin } from "@vis.gl/react-google-maps";
 import Image from "next/image";
 import { useSpring, animated } from "react-spring";
-import location_pin from "@/public/location_pin.png";
-import lunch_pin from "@/public/pin_icon.png";
+import location_pin from "@/public/location_pin.svg";
+import lunch_pin from "@/public/pin_icon.svg";
 
 type Props = {
   selectedLng?: number | null;
@@ -32,8 +33,8 @@ export const Pin = ({ selectedLng, lng }: Props) => {
       <Image
         src={isClicked ? location_pin : lunch_pin}
         alt="location_pin"
-        width={32}
-        height={32}
+        width={30}
+        height={30}
         quality={100}
       />
     </animated.button>
