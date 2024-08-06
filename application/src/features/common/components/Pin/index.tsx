@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Pin as GooglePin } from "@vis.gl/react-google-maps";
 import Image from "next/image";
 import { useSpring, animated } from "react-spring";
 import location_pin from "@/public/location_pin.svg";
