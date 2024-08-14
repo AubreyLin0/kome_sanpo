@@ -2,8 +2,11 @@
 // ただ、pagesではuse clientを指定したくないので、わざわざMapTemplateを作成している
 // app routerの嫌なとこその1
 "use client";
-import { useState } from "react";
-import { MapCameraProps } from "@vis.gl/react-google-maps";
+import { useCallback, useState } from "react";
+import {
+  MapCameraChangedEvent,
+  MapCameraProps,
+} from "@vis.gl/react-google-maps";
 import { ResponsiveCard } from "@/src/features/common/components/Card/ResponsiveCard";
 import GoogleMap from "@/src/features/common/components/Map";
 import { CardDataType } from "@/src/features/common/type";
@@ -22,31 +25,38 @@ export const MapTemplate = ({ data }: Props) => {
     lng?: number | null;
   }>({ lat: null, lng: null });
 
+  const handleCameraChange = useCallback((event: MapCameraChangedEvent) => {
+    setMapCameraPosition(event.detail);
+  }, []);
+
   return (
-    <div className="flex w-[100vw] h-[90vh]">
-      <div className="w-[40vw] overflow-y-scroll">
-        <ResponsiveCard
+    <>
+      <div className="flex w-[100vw] h-[90vh]">
+        <div className="w-[40vw] overflow-y-scroll hidden md:block">
+          <ResponsiveCard
+            data={data}
+            onClick={(value) => {
+              setMapCameraPosition(value);
+              setSelectedLatLng({
+                lat: value.center.lat,
+                lng: value.center.lng,
+              });
+            }}
+          />
+        </div>
+        <GoogleMap
           data={data}
-          onClick={(value) => {
-            setMapCameraPosition(value);
-            setSelectedLatLng({ lat: value.center.lat, lng: value.center.lng });
+          mapCameraPosition={mapCameraPosition}
+          onCameraChanged={handleCameraChange}
+          onClick={(event) => {
+            setSelectedLatLng({
+              lat: event.latLng?.lat(),
+              lng: event.latLng?.lng(),
+            });
           }}
+          selectedLatLng={selectedLatLng}
         />
       </div>
-      <GoogleMap
-        data={data}
-        mapCameraPosition={mapCameraPosition}
-        onCameraChanged={(event) => {
-          setMapCameraPosition(event.detail);
-        }}
-        onClick={(event) => {
-          setSelectedLatLng({
-            lat: event.latLng?.lat(),
-            lng: event.latLng?.lng(),
-          });
-        }}
-        selectedLatLng={selectedLatLng}
-      />
-    </div>
+    </>
   );
 };

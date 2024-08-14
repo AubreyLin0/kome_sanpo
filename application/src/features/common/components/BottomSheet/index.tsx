@@ -1,32 +1,27 @@
+import { ReactNode } from "react";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  SheetOverlay,
-  SheetPortal,
 } from "@/src/shadcn-ui/sheet";
 
-export const BottomSheet = () => {
+type Props = {
+  children: ReactNode;
+};
+
+export const BottomSheet = ({ children }: Props) => {
   return (
     <Sheet>
-      <SheetOverlay />
-      <SheetTrigger>Open Bottom Sheet</SheetTrigger>
-      <SheetPortal>
-        <SheetContent side="bottom">
-          <SheetHeader>
-            <SheetTitle>Bottom Sheet</SheetTitle>
-            <SheetDescription>This is a bottom sheet.</SheetDescription>
-          </SheetHeader>
-          <SheetFooter>
-            <SheetClose>Close</SheetClose>
-          </SheetFooter>
-        </SheetContent>
-      </SheetPortal>
+      <SheetTrigger>Open</SheetTrigger>
+      <SheetContent side="bottom">
+        <SheetHeader>
+          <SheetTitle>Are you absolutely sure?</SheetTitle>
+          <SheetDescription>{children}</SheetDescription>
+        </SheetHeader>
+      </SheetContent>
     </Sheet>
   );
 };
