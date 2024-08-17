@@ -17,14 +17,20 @@ type Props = {
 };
 
 export const MapTemplate = ({ data }: Props) => {
+  // mapのカメラ位置をControlledするためのstate
   const [mapCameraPosition, setMapCameraPosition] = useState<MapCameraProps>({
     center: { lat: 34.99682, lng: 135.759258 },
     zoom: 17,
   });
+
+  // Pinをクリックした際のLatLngを保持するstate
   const [selectedLatLng, setSelectedLatLng] = useState<{
     lat?: number | null;
     lng?: number | null;
   }>({ lat: null, lng: null });
+
+  // sheetの開閉をControlledするstate
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleCameraChange = useCallback((event: MapCameraChangedEvent) => {
     setMapCameraPosition(event.detail);
@@ -58,7 +64,10 @@ export const MapTemplate = ({ data }: Props) => {
           selectedLatLng={selectedLatLng}
         />
         <div className="md:hidden">
-          <BottomSheet>
+          <BottomSheet
+            isOpen={isSheetOpen}
+            onOpenChange={() => setIsSheetOpen(!isSheetOpen)}
+          >
             <ResponsiveCard
               data={data}
               onClick={(value) => {
@@ -67,6 +76,7 @@ export const MapTemplate = ({ data }: Props) => {
                   lat: value.center.lat,
                   lng: value.center.lng,
                 });
+                setIsSheetOpen(false);
               }}
             />
           </BottomSheet>

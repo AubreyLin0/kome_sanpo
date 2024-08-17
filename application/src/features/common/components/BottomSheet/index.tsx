@@ -11,11 +11,13 @@ import {
 
 type Props = {
   children: ReactNode;
+  isOpen: boolean;
+  onOpenChange: () => void;
 };
 
-export const BottomSheet = ({ children }: Props) => {
+export const BottomSheet = ({ children, isOpen, onOpenChange }: Props) => {
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={onOpenChange}>
       <SheetTrigger className="w-full h-full">
         <div className="flex justify-center items-center">
           <IoIosArrowUp className="m-2 text-text" />
@@ -24,8 +26,8 @@ export const BottomSheet = ({ children }: Props) => {
       </SheetTrigger>
       <SheetContent side="bottom">
         <SheetHeader>
-          <SheetTitle>Are you absolutely sure?</SheetTitle>
-          <SheetDescription>リストから選ぶ</SheetDescription>
+          <SheetTitle>リストから選ぶ</SheetTitle>
+          <SheetDescription>クリックしたら場所を確認できます</SheetDescription>
         </SheetHeader>
         {children}
       </SheetContent>
