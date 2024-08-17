@@ -7,6 +7,7 @@ import {
   MapCameraChangedEvent,
   MapCameraProps,
 } from "@vis.gl/react-google-maps";
+import { BottomSheet } from "../BottomSheet";
 import { ResponsiveCard } from "@/src/features/common/components/Card/ResponsiveCard";
 import GoogleMap from "@/src/features/common/components/Map";
 import { CardDataType } from "@/src/features/common/type";
@@ -31,7 +32,7 @@ export const MapTemplate = ({ data }: Props) => {
 
   return (
     <>
-      <div className="flex w-[100vw] h-[90vh]">
+      <div className="md:flex w-[100vw] h-[90vh]">
         <div className="w-[40vw] overflow-y-scroll hidden md:block">
           <ResponsiveCard
             data={data}
@@ -56,6 +57,20 @@ export const MapTemplate = ({ data }: Props) => {
           }}
           selectedLatLng={selectedLatLng}
         />
+        <div className="md:hidden">
+          <BottomSheet>
+            <ResponsiveCard
+              data={data}
+              onClick={(value) => {
+                setMapCameraPosition(value);
+                setSelectedLatLng({
+                  lat: value.center.lat,
+                  lng: value.center.lng,
+                });
+              }}
+            />
+          </BottomSheet>
+        </div>
       </div>
     </>
   );

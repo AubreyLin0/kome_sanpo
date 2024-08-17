@@ -19,8 +19,9 @@ export const BottomSheet = ({ children }: Props) => {
       <SheetContent side="bottom">
         <SheetHeader>
           <SheetTitle>Are you absolutely sure?</SheetTitle>
-          <SheetDescription>{children}</SheetDescription>
+          <SheetDescription>リストから選ぶ</SheetDescription>
         </SheetHeader>
+        {children}
       </SheetContent>
     </Sheet>
   );
