@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { IoIosArrowUp } from "react-icons/io";
 import {
   Sheet,
   SheetContent,
@@ -15,7 +16,12 @@ type Props = {
 export const BottomSheet = ({ children }: Props) => {
   return (
     <Sheet>
-      <SheetTrigger>Open</SheetTrigger>
+      <SheetTrigger className="w-full h-full">
+        <div className="flex justify-center items-center">
+          <IoIosArrowUp className="m-2 text-text" />
+          <p className="text-text">リストを開く</p>
+        </div>
+      </SheetTrigger>
       <SheetContent side="bottom">
         <SheetHeader>
           <SheetTitle>Are you absolutely sure?</SheetTitle>

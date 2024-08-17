@@ -32,7 +32,7 @@ export const MapTemplate = ({ data }: Props) => {
 
   return (
     <>
-      <div className="md:flex w-[100vw] h-[90vh]">
+      <div className="grid grid-rows-[82vh,8vh] md:flex w-[100vw] md:h-[90vh] ">
         <div className="w-[40vw] overflow-y-scroll hidden md:block">
           <ResponsiveCard
             data={data}

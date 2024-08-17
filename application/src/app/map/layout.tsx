@@ -12,7 +12,7 @@ export default async function MapLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${inter.className}  grid grid-cols[10vh,90vh]`}>
+      <body className={`${inter.className} grid grid-rows-[10vh,90vh]`}>
         {/* とりあえずshadcn-uiのデフォルトで*/}
         <Header />
         {children}
