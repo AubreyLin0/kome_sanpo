@@ -21,11 +21,9 @@ export const Pin = ({ selectedLng, lng }: Props) => {
     config: { tension: 300, friction: 10 },
   });
 
-  const handleClick = useMemo(() => {
+  useMemo(() => {
     setIsClicked(lng === selectedLng);
   }, [lng, selectedLng]);
-
-  handleClick;
 
   return (
     <animated.button style={heartAnimation}>
