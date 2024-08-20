@@ -28,7 +28,7 @@ type Props = {
   onClick?: (value: MapCameraProps) => void;
 };
 
-export const ResponsiveCard = ({ data, onClick }: Props) => {
+export const ResponsiveCard = ({ data, onClick = () => {} }: Props) => {
   return data.map((item) => {
     const { openTime, closeTime } = item;
     const isOpen = handleCheckIfOpen({ openTime, closeTime });
@@ -40,14 +40,13 @@ export const ResponsiveCard = ({ data, onClick }: Props) => {
           className="border-b-2 text-sm"
           onClick={(event) => {
             // mapページではLinkを無効化し、onClickを実行する
-            onClick &&
-              (event.preventDefault(),
+            event.preventDefault(),
               onClick({
                 // なぜかnullが入るので、nullの場合は0にする
                 // なぜか緯度と経度が逆になっているので、逆に設定
                 center: { lat: item.longitude || 0, lng: item.latitude || 0 },
                 zoom: 17,
-              }));
+              });
           }}
         >
           <CardHeader>
