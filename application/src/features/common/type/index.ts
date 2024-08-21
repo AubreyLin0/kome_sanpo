@@ -1,12 +1,15 @@
+// ここはなぜ配列で型を定義しているのか？
 export type RestaurantDetailDataType = {
   title: string;
   category: string;
   openingTime: string;
+  longitude: number;
+  latitude: number;
   phone: string;
   regularHoliday: string;
   address: string;
   imageSrc: string;
-};
+}[];
 import { getRestaurants } from "@/src/data/restaurants";
 
 export type Restaurants = Awaited<ReturnType<typeof getRestaurants>>;

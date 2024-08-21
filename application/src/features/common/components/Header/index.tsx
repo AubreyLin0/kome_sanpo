@@ -9,7 +9,7 @@ import { getSearch } from "@/src/data/sample";
 export const Header = async () => {
   const searchDate = await getSearch();
   return (
-    <header className="grid grid-cols-2 gap-3 md:grid-cols-2-4-2 justify-items-center items-center h-[65px] shadow">
+    <header className="grid grid-cols-2 h-[10vh] gap-3 md:grid-cols-2-4-2 justify-items-center items-center shadow">
       <Image src={headerIcon} alt="headerIcon" className="p-3" />
       <Search
         placeholder="店名・ジャンルで検索"

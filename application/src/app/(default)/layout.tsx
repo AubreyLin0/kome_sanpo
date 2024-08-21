@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import { Footer } from "@/src/features/common/components/Footer";
 import { Header } from "@/src/features/common/components/Header";
 
@@ -18,7 +18,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${inter.className}  min-h-[100vh]`}>
+      <body className={`${inter.className} min-h-[100vh]`}>
         {/* とりあえずshadcn-uiのデフォルトで*/}
         <Header />
         {children}

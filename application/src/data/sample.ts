@@ -34,15 +34,19 @@ export const getSearch = async () => {
   return sampleData;
 };
 
-const sampleDetailData: RestaurantDetailDataType = {
-  title: "美味しいカツレツカルボナーラ",
-  category: "イタリアン",
-  openingTime: "11:00~14:00",
-  phone: "000-0000-0000",
-  regularHoliday: "水曜日",
-  address: "東京都渋谷区1-22アイフルマンション101号室",
-  imageSrc: "/pasta.jpg",
-};
+const sampleDetailData: RestaurantDetailDataType = [
+  {
+    title: "美味しいカツレツカルボナーラ",
+    category: "イタリアン",
+    openingTime: "11:00~14:00",
+    phone: "000-0000-0000",
+    regularHoliday: "水曜日",
+    address: "東京都渋谷区1-22アイフルマンション101号室",
+    imageSrc: "/pasta.jpg",
+    longitude: 139.702473,
+    latitude: 35.658581,
+  },
+];
 
 export const getRestaurantDetailData = async () => {
   //わざと遅延させる

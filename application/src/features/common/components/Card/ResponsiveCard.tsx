@@ -1,3 +1,5 @@
+"use client";
+import { MapCameraProps } from "@vis.gl/react-google-maps";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,16 +25,30 @@ import {
 
 type Props = {
   data: CardDataType;
+  onClick?: (value: MapCameraProps) => void;
 };
 
-export const ResponsiveCard = ({ data }: Props) => {
+export const ResponsiveCard = ({ data, onClick = () => {} }: Props) => {
   return data.map((item) => {
     const { openTime, closeTime } = item;
     const isOpen = handleCheckIfOpen({ openTime, closeTime });
 
+    // todo:Linkをどうするか
     return (
       <Link key={item.id} href={`/list/${item.id}`}>
-        <ShadcnCard className="border-b-2 text-sm">
+        <ShadcnCard
+          className="border-b-2 text-sm"
+          onClick={(event) => {
+            // mapページではLinkを無効化し、onClickを実行する
+            event.preventDefault(),
+              onClick({
+                // なぜかnullが入るので、nullの場合は0にする
+                // なぜか緯度と経度が逆になっているので、逆に設定
+                center: { lat: item.longitude || 0, lng: item.latitude || 0 },
+                zoom: 17,
+              });
+          }}
+        >
           <CardHeader>
             <CardTitle>{item.name}</CardTitle>
           </CardHeader>

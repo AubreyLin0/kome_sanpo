@@ -23,15 +23,21 @@ import {
 
 type Props = {
   data: CardDataType;
+  className?: string;
 };
 
-export const Card = ({ data }: Props) => {
+export const Card = ({ data, className = "" }: Props) => {
   return data.map((item) => {
     const { openTime, closeTime } = item;
     const isOpen = handleCheckIfOpen({ openTime, closeTime });
     return (
       <Link key={item.id} href={`/list/${item.id}`}>
-        <ShadcnCard className="border-2 w-[320px] shadow-md grid grid-rows-[240px_] rounded-lg">
+        <ShadcnCard
+          className={clsx(
+            "border-2 w-[320px] shadow-md grid grid-rows-[240px_] rounded-lg",
+            className
+          )}
+        >
           <div className="relative">
             {!isOpen && (
               <div className="absolute w-full h-full bg-gray-950/50 flex items-center justify-center">
