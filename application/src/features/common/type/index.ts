@@ -39,3 +39,13 @@ export type Genre =
   | "SET_MEAL"
   | "TONKATSU"
   | "OTHER";
+
+export type RegisterRestaurantDataType = {
+  name: string;
+  genre: Genre;
+  openTime: string;
+  closeTime: string;
+  address: string;
+  image: File;
+  phoneNumber: string;
+};

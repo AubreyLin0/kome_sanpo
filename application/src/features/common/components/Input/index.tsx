@@ -1,10 +1,25 @@
+import { HTMLInputTypeAttribute } from "react";
 import { Input as ShadcnInput } from "@/src/shadcn-ui/input";
 
-type Props = {
-  name: string;
-  defaultValue: string;
+type Props<T extends Record<string, any>> = {
+  name: keyof T;
+  defaultValue?: string;
+  type?: HTMLInputTypeAttribute;
+  className?: string;
 };
 
-export const Input = () => {
-  return <ShadcnInput />;
+export const Input = <T extends Record<string, any>>({
+  name,
+  defaultValue,
+  type = "text",
+  className = "",
+}: Props<T>) => {
+  return (
+    <ShadcnInput
+      name={name as string}
+      defaultValue={defaultValue}
+      type={type}
+      className={className}
+    />
+  );
 };

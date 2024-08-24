@@ -7,6 +7,7 @@ type Props = {
   className?: string;
   size?: "default" | "sm" | "lg" | "icon" | "xs";
   disabled?: boolean;
+  type?: "button" | "submit";
 };
 
 export const Button = ({
@@ -15,12 +16,14 @@ export const Button = ({
   className = "",
   size = "default",
   disabled = false,
+  type = "button",
 }: Props) => (
   <ShadcnButton
     variant={variant}
     className={className}
     size={size}
     disabled={disabled}
+    type={type}
   >
     {children}
   </ShadcnButton>
