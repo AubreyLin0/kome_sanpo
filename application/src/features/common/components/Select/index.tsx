@@ -6,17 +6,28 @@ import {
   SelectValue,
 } from "@/src/shadcn-ui/select";
 
+type Props<T extends Record<string, any>> = {
+  name: keyof T;
+  defaultValue?: string;
+  selectItems: string[];
+  className?: string;
+};
 //todo:Propsを追加する
-export const Select = () => {
+export const Select = <T extends Record<string, any>>({
+  selectItems,
+  name,
+}: Props<T>) => {
   return (
-    <ShadcnSelect>
-      <SelectTrigger className="w-full md:w-[180px]">
-        <SelectValue placeholder="Theme" />
+    <ShadcnSelect name={name as string}>
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder="" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="light">Light</SelectItem>
-        <SelectItem value="dark">Dark</SelectItem>
-        <SelectItem value="system">System</SelectItem>
+        {selectItems.map((item) => (
+          <SelectItem key={item} value={item}>
+            {item}
+          </SelectItem>
+        ))}
       </SelectContent>
     </ShadcnSelect>
   );

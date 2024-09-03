@@ -3,10 +3,15 @@ import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useFormState } from "react-dom";
 import { registerRestaurantData } from "../../action";
-import { REGISTER_RESTAURANT_DATA_SCHEMA } from "../../constants";
+import {
+  HOURS,
+  MINUTES,
+  REGISTER_RESTAURANT_DATA_SCHEMA,
+} from "../../constants";
 import { RegisterRestaurantDataType } from "../../type";
 import { Button } from "../Button";
 import { Input } from "../Input";
+import { Select } from "../Select";
 import { Label } from "@/src/shadcn-ui/label";
 
 type Props = {
@@ -25,6 +30,32 @@ const LabelInput = ({ name, defaultValue, label, errorMessages }: Props) => {
         defaultValue={defaultValue}
       />
       <div>{errorMessages}</div>
+    </div>
+  );
+};
+
+type LabelSelectProps = {
+  label: string;
+  hours: Omit<Props, "label">;
+  minutes: Omit<Props, "label">;
+};
+
+const LabelSelect = ({ hours, minutes, label }: LabelSelectProps) => {
+  return (
+    <div className="grid grid-cols-[100px_100px_20px_100px]">
+      <Label className="flex items-center text-text">{label}</Label>
+      <Select<RegisterRestaurantDataType>
+        name={hours.name}
+        selectItems={HOURS}
+        defaultValue={hours.defaultValue}
+      />
+      <p className="flex items-center justify-center test-test">：</p>
+      <Select<RegisterRestaurantDataType>
+        name={minutes.name}
+        selectItems={MINUTES}
+        defaultValue={minutes.defaultValue}
+      />
+      <div>{hours.errorMessages || minutes.errorMessages}</div>
     </div>
   );
 };
@@ -54,25 +85,41 @@ export const Form = () => {
       className="grid grid-rows-3 gap-6"
       noValidate
     >
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-2 gap-10">
         <LabelInput
           label="店名"
           name="name"
           defaultValue={fields.name.initialValue}
           errorMessages={fields.name.errors}
         />
-        <LabelInput
-          label="開始時間"
-          name="openTime"
-          defaultValue={fields.openTime.initialValue}
-          errorMessages={fields.openTime.errors}
-        />
-        <LabelInput
-          label="終了時間"
-          name="closeTime"
-          defaultValue={fields.closeTime.initialValue}
-          errorMessages={fields.closeTime.errors}
-        />
+        <div className="grid grid-cols-2">
+          <LabelSelect
+            label="開始時間"
+            hours={{
+              name: "openTime_hours",
+              defaultValue: fields.openTime_hours.initialValue,
+              errorMessages: fields.openTime_hours.errors,
+            }}
+            minutes={{
+              name: "openTime_minutes",
+              defaultValue: fields.openTime_minutes.initialValue,
+              errorMessages: fields.openTime_minutes.errors,
+            }}
+          />
+          <LabelSelect
+            label="終了時間"
+            hours={{
+              name: "closeTime_hours",
+              defaultValue: fields.closeTime_hours.initialValue,
+              errorMessages: fields.closeTime_hours.errors,
+            }}
+            minutes={{
+              name: "closeTime_minutes",
+              defaultValue: fields.closeTime_minutes.initialValue,
+              errorMessages: fields.closeTime_minutes.errors,
+            }}
+          />
+        </div>
       </div>
       <div className="grid grid-cols-2 gap-10">
         <LabelInput
