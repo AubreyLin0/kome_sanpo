@@ -7,7 +7,7 @@ import {
 } from "@/src/shadcn-ui/select";
 
 type Props<T extends Record<string, any>> = {
-  name: keyof T;
+  name?: keyof T;
   defaultValue?: string;
   selectItems: string[];
   className?: string;

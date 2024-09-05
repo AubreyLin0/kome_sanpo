@@ -23,13 +23,17 @@ type Props = {
 
 const LabelInput = ({ name, defaultValue, label, errorMessages }: Props) => {
   return (
-    <div className="grid grid-cols-[100px_1fr]">
-      <Label className="flex items-center text-text">{label}</Label>
-      <Input<RegisterRestaurantDataType>
-        name={name}
-        defaultValue={defaultValue}
-      />
-      <div>{errorMessages}</div>
+    <div>
+      <div className="grid grid-cols-[100px_1fr]">
+        <Label className="flex items-center text-text">{label}</Label>
+        <Input<RegisterRestaurantDataType>
+          name={name}
+          defaultValue={defaultValue}
+        />
+      </div>
+      <p className="text-sm text-red min-h-[20px] ml-[100px] mt-[5px]">
+        {errorMessages}
+      </p>
     </div>
   );
 };
@@ -42,20 +46,25 @@ type LabelSelectProps = {
 
 const LabelSelect = ({ hours, minutes, label }: LabelSelectProps) => {
   return (
-    <div className="grid grid-cols-[100px_100px_20px_100px]">
-      <Label className="flex items-center text-text">{label}</Label>
-      <Select<RegisterRestaurantDataType>
-        name={hours.name}
-        selectItems={HOURS}
-        defaultValue={hours.defaultValue}
-      />
-      <p className="flex items-center justify-center test-test">：</p>
-      <Select<RegisterRestaurantDataType>
-        name={minutes.name}
-        selectItems={MINUTES}
-        defaultValue={minutes.defaultValue}
-      />
-      <div>{hours.errorMessages || minutes.errorMessages}</div>
+    <div>
+      <div className="grid grid-cols-[100px_100px_20px_100px]">
+        <Label className="flex items-center text-text">{label}</Label>
+        <Select<RegisterRestaurantDataType>
+          name={hours.name}
+          selectItems={HOURS}
+          defaultValue={hours.defaultValue}
+        />
+        <p className="flex items-center justify-center test-test">：</p>
+        <Select<RegisterRestaurantDataType>
+          name={minutes.name}
+          selectItems={MINUTES}
+          defaultValue={minutes.defaultValue}
+        />
+        <div>{hours.errorMessages}</div>
+      </div>
+      <p className="text-sm text-red min-h-[20px] ml-[100px] mt-[5px]">
+        {minutes.errorMessages || hours.errorMessages}
+      </p>
     </div>
   );
 };
