@@ -7,8 +7,8 @@ import {
   HOURS,
   MINUTES,
   REGISTER_RESTAURANT_DATA_SCHEMA,
+  RegisterRestaurantDataType,
 } from "../../constants";
-import { RegisterRestaurantDataType } from "../../type";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { Select } from "../Select";

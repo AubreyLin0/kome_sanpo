@@ -14,6 +14,13 @@ const SINGLE_BYTE_NUMBER_ZERO = /^[0-9]+$/;
 const VALID_CHARACTERS =
   /^(?![\s　]*$)([ぁ-ゖゝゞァ-ヷｱ-ﾝー一-龥丑-響々０-９ａ-ｚＡ-Ｚ　！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［￥＼］＾＿｀｛｜｝〜。、・「」0-9a-zA-Z !\"#$%&'()*+,-.\/:;<=>?@\[¥\]^_`{|}~｡､･｢｣])+$/;
 
+export const HOURS = Array.from({ length: 24 }, (_, item) =>
+  `${item}`.padStart(2, "0")
+);
+export const MINUTES = Array.from({ length: 60 }, (_, item) =>
+  `${item}`.padStart(2, "0")
+);
+
 export const REGISTER_RESTAURANT_DATA_SCHEMA = z.object({
   name: z
     .string({ required_error: REQUIRED_MESSAGE })
@@ -37,6 +44,10 @@ export const REGISTER_RESTAURANT_DATA_SCHEMA = z.object({
   closeTime_minutes: z.string({ required_error: SELECT_REQUIRED_MESSAGE }),
 });
 
+export type RegisterRestaurantDataType = z.infer<
+  typeof REGISTER_RESTAURANT_DATA_SCHEMA
+>;
+
 export const RESTAURANT_GENRE = new Map<Genre, string>([
   ["JAPANESE", "和食"],
   ["WESTERN", "洋食"],
@@ -49,10 +60,3 @@ export const RESTAURANT_GENRE = new Map<Genre, string>([
   ["TONKATSU", "とんかつ"],
   ["OTHER", "その他"],
 ]);
-
-export const HOURS = Array.from({ length: 24 }, (_, item) =>
-  `${item}`.padStart(2, "0")
-);
-export const MINUTES = Array.from({ length: 60 }, (_, item) =>
-  `${item}`.padStart(2, "0")
-);
