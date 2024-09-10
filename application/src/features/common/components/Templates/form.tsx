@@ -1,6 +1,6 @@
 "use client"; // form.tsx
 import { useForm } from "@conform-to/react";
-import { parseWithZod } from "@conform-to/zod";
+import { getZodConstraint, parseWithZod } from "@conform-to/zod";
 import { useFormState } from "react-dom";
 import { registerRestaurantData } from "../../action";
 import {
@@ -17,11 +17,18 @@ import { Label } from "@/src/shadcn-ui/label";
 type Props = {
   label: string;
   name: keyof RegisterRestaurantDataType;
+  key?: string;
   defaultValue?: string;
   errorMessages?: string[];
 };
 
-const LabelInput = ({ name, defaultValue, label, errorMessages }: Props) => {
+const LabelInput = ({
+  name,
+  defaultValue,
+  label,
+  errorMessages,
+  key,
+}: Props) => {
   return (
     <div>
       <div className="grid grid-cols-[100px_1fr]">
@@ -29,6 +36,7 @@ const LabelInput = ({ name, defaultValue, label, errorMessages }: Props) => {
         <Input<RegisterRestaurantDataType>
           name={name}
           defaultValue={defaultValue}
+          key={key}
         />
       </div>
       <p className="text-sm text-red min-h-[20px] ml-[100px] mt-[5px]">
@@ -74,7 +82,7 @@ export const Form = () => {
   const [form, fields] = useForm({
     // 前回の送信結果を同期
     lastResult: lastData,
-
+    constraint: getZodConstraint(REGISTER_RESTAURANT_DATA_SCHEMA),
     // クライアントでバリデーション・ロジックを再利用する
     onValidate({ formData }) {
       return parseWithZod(formData, {
@@ -100,6 +108,7 @@ export const Form = () => {
           name="name"
           defaultValue={fields.name.initialValue}
           errorMessages={fields.name.errors}
+          key={fields.name.key}
         />
         <div className="grid grid-cols-2">
           <LabelSelect
@@ -136,12 +145,14 @@ export const Form = () => {
           name="genre"
           defaultValue={fields.genre.initialValue}
           errorMessages={fields.genre.errors}
+          key={fields.genre.key}
         />
         <LabelInput
           label="電話番号"
           name="phoneNumber"
           defaultValue={fields.phoneNumber.initialValue}
           errorMessages={fields.phoneNumber.errors}
+          key={fields.phoneNumber.key}
         />
       </div>
       <LabelInput
@@ -149,14 +160,17 @@ export const Form = () => {
         name="address"
         defaultValue={fields.address.initialValue}
         errorMessages={fields.address.errors}
+        key={fields.address.key}
       />
-      <Input<RegisterRestaurantDataType>
+      {/* <Input<RegisterRestaurantDataType>
         name="image"
         type="file"
         className="h-[50vh]"
-      />
+      /> */}
       <div className="flex justify-center items-center">
-        <Button className="w-[200px]">登録</Button>
+        <Button type="submit" className="w-[200px]">
+          登録
+        </Button>
       </div>
     </form>
   );
