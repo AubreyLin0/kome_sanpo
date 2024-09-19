@@ -56,7 +56,7 @@ const LabelSelect = ({ hours, minutes, subLabel }: LabelSelectProps) => {
   return (
     <div>
       <div className="grid grid-cols-[70px_1fr_20px_1fr]">
-        <Label className="flex items-center text-subText">{subLabel}</Label>
+        <Label className="flex items-center text-text">{subLabel}</Label>
         <Select<RegisterRestaurantDataType>
           name={hours.name}
           selectItems={HOURS}
@@ -98,10 +98,10 @@ export const Form = () => {
       id={form.id}
       onSubmit={form.onSubmit}
       action={action}
-      className="grid grid-rows-[1fr_0.5fr_0.5fr] gap-2 p-20"
+      className="grid grid-rows-[1fr_0.5fr_0.5fr] gap-2"
       noValidate
     >
-      <div className="grid grid-cols-2 gap-5 justify-center items-center">
+      <div className="grid grid-cols-2 gap-10 justify-center items-center">
         <LabelInput
           label="店名"
           name="name"
@@ -143,7 +143,7 @@ export const Form = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-2 gap-10">
         <LabelInput
           label="ジャンル"
           name="genre"
