@@ -68,7 +68,6 @@ const LabelSelect = ({ hours, minutes, label }: LabelSelectProps) => {
           selectItems={MINUTES}
           defaultValue={minutes.defaultValue}
         />
-        <div>{hours.errorMessages}</div>
       </div>
       <p className="text-sm text-red min-h-[20px] ml-[100px] mt-[5px]">
         {minutes.errorMessages || hours.errorMessages}
@@ -162,11 +161,14 @@ export const Form = () => {
         errorMessages={fields.address.errors}
         key={fields.address.key}
       />
-      {/* <Input<RegisterRestaurantDataType>
+      <Input<RegisterRestaurantDataType>
         name="image"
         type="file"
         className="h-[50vh]"
-      /> */}
+      />
+      <p className="text-sm text-red min-h-[20px] ml-[100px] mt-[5px]">
+        {fields.image.errors}
+      </p>
       <div className="flex justify-center items-center">
         <Button type="submit" className="w-[200px]">
           登録

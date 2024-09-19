@@ -37,7 +37,7 @@ export const REGISTER_RESTAURANT_DATA_SCHEMA = z.object({
   address: z
     .string({ required_error: REQUIRED_MESSAGE })
     .regex(VALID_CHARACTERS, { message: VALID_CHARACTERS_MESSAGE }),
-  // image: z.instanceof(File, { message: IMAGE_REQUIRED_MESSAGE }),
+  image: z.instanceof(File, { message: IMAGE_REQUIRED_MESSAGE }),
   openTime_hours: z.string({ required_error: SELECT_REQUIRED_MESSAGE }),
   openTime_minutes: z.string({ required_error: SELECT_REQUIRED_MESSAGE }),
   closeTime_hours: z.string({ required_error: SELECT_REQUIRED_MESSAGE }),
