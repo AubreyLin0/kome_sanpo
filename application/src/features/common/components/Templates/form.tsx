@@ -47,16 +47,16 @@ const LabelInput = ({
 };
 
 type LabelSelectProps = {
-  label: string;
+  subLabel: string;
   hours: Omit<Props, "label">;
   minutes: Omit<Props, "label">;
 };
 
-const LabelSelect = ({ hours, minutes, label }: LabelSelectProps) => {
+const LabelSelect = ({ hours, minutes, subLabel }: LabelSelectProps) => {
   return (
     <div>
-      <div className="grid grid-cols-[100px_100px_20px_100px]">
-        <Label className="flex items-center text-text">{label}</Label>
+      <div className="grid grid-cols-[70px_1fr_20px_1fr]">
+        <Label className="flex items-center text-subText">{subLabel}</Label>
         <Select<RegisterRestaurantDataType>
           name={hours.name}
           selectItems={HOURS}
@@ -69,7 +69,7 @@ const LabelSelect = ({ hours, minutes, label }: LabelSelectProps) => {
           defaultValue={minutes.defaultValue}
         />
       </div>
-      <p className="text-sm text-red min-h-[20px] ml-[100px] mt-[5px]">
+      <p className="text-sm text-red min-h-[20px] mt-[5px]">
         {minutes.errorMessages || hours.errorMessages}
       </p>
     </div>
@@ -98,10 +98,10 @@ export const Form = () => {
       id={form.id}
       onSubmit={form.onSubmit}
       action={action}
-      className="grid grid-rows-3 gap-6"
+      className="grid grid-rows-[1fr_0.5fr_0.5fr] gap-2 p-20"
       noValidate
     >
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid grid-cols-2 gap-5 justify-center items-center">
         <LabelInput
           label="店名"
           name="name"
@@ -109,36 +109,41 @@ export const Form = () => {
           errorMessages={fields.name.errors}
           key={fields.name.key}
         />
-        <div className="grid grid-cols-2">
-          <LabelSelect
-            label="開始時間"
-            hours={{
-              name: "openTime_hours",
-              defaultValue: fields.openTime_hours.initialValue,
-              errorMessages: fields.openTime_hours.errors,
-            }}
-            minutes={{
-              name: "openTime_minutes",
-              defaultValue: fields.openTime_minutes.initialValue,
-              errorMessages: fields.openTime_minutes.errors,
-            }}
-          />
-          <LabelSelect
-            label="終了時間"
-            hours={{
-              name: "closeTime_hours",
-              defaultValue: fields.closeTime_hours.initialValue,
-              errorMessages: fields.closeTime_hours.errors,
-            }}
-            minutes={{
-              name: "closeTime_minutes",
-              defaultValue: fields.closeTime_minutes.initialValue,
-              errorMessages: fields.closeTime_minutes.errors,
-            }}
-          />
+        <div className="grid grid-cols-[100px_1fr] gap-2">
+          <Label className="flex items-center text-text mb-[20px]">
+            営業時間
+          </Label>
+          <div className="grid grid-rows-2">
+            <LabelSelect
+              subLabel="open"
+              hours={{
+                name: "openTime_hours",
+                defaultValue: fields.openTime_hours.initialValue,
+                errorMessages: fields.openTime_hours.errors,
+              }}
+              minutes={{
+                name: "openTime_minutes",
+                defaultValue: fields.openTime_minutes.initialValue,
+                errorMessages: fields.openTime_minutes.errors,
+              }}
+            />
+            <LabelSelect
+              subLabel="close"
+              hours={{
+                name: "closeTime_hours",
+                defaultValue: fields.closeTime_hours.initialValue,
+                errorMessages: fields.closeTime_hours.errors,
+              }}
+              minutes={{
+                name: "closeTime_minutes",
+                defaultValue: fields.closeTime_minutes.initialValue,
+                errorMessages: fields.closeTime_minutes.errors,
+              }}
+            />
+          </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid grid-cols-2 gap-5">
         <LabelInput
           label="ジャンル"
           name="genre"
@@ -166,7 +171,7 @@ export const Form = () => {
         type="file"
         className="h-[50vh]"
       />
-      <p className="text-sm text-red min-h-[20px] ml-[100px] mt-[5px]">
+      <p className="text-sm text-red min-h-[20px] mt-[5px]">
         {fields.image.errors}
       </p>
       <div className="flex justify-center items-center">
