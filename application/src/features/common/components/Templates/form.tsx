@@ -42,7 +42,7 @@ const LabelInput = ({
           maxLength={maxLength}
         />
       </div>
-      <p className="text-[12px] text-red min-h-[20px] ml-[100px] mt-[5px]">
+      <p className="text-[12px] text-red min-h-[20px] md:ml-[100px] ml-[70px] mt-[5px]">
         {errorMessages}
       </p>
     </div>
