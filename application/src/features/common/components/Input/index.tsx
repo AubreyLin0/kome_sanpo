@@ -6,6 +6,7 @@ type Props<T extends Record<string, any>> = {
   defaultValue?: string;
   type?: HTMLInputTypeAttribute;
   className?: string;
+  maxLength?: number;
 };
 
 export const Input = <T extends Record<string, any>>({
@@ -13,6 +14,7 @@ export const Input = <T extends Record<string, any>>({
   defaultValue,
   type = "text",
   className = "",
+  maxLength,
 }: Props<T>) => {
   return (
     <ShadcnInput
@@ -20,6 +22,7 @@ export const Input = <T extends Record<string, any>>({
       defaultValue={defaultValue}
       type={type}
       className={className}
+      maxLength={maxLength}
     />
   );
 };

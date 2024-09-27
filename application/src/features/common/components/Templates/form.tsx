@@ -20,6 +20,7 @@ type Props = {
   key?: string;
   defaultValue?: string;
   errorMessages?: string[];
+  maxLength?: number;
 };
 
 const LabelInput = ({
@@ -28,6 +29,7 @@ const LabelInput = ({
   label,
   errorMessages,
   key,
+  maxLength,
 }: Props) => {
   return (
     <div>
@@ -37,19 +39,24 @@ const LabelInput = ({
           name={name}
           defaultValue={defaultValue}
           key={key}
+          maxLength={maxLength}
         />
       </div>
-      <p className="text-sm text-red min-h-[20px] ml-[100px] mt-[5px]">
+      <p className="text-[12px] text-red min-h-[20px] ml-[100px] mt-[5px]">
         {errorMessages}
       </p>
     </div>
   );
 };
 
+type SelectProps = Omit<Props, "label" | "maxLength"> & {
+  onValueChange: (value: string) => void;
+};
+
 type LabelSelectProps = {
   subLabel: string;
-  hours: Omit<Props, "label">;
-  minutes: Omit<Props, "label">;
+  hours: SelectProps;
+  minutes: SelectProps;
 };
 
 const LabelSelect = ({ hours, minutes, subLabel }: LabelSelectProps) => {
@@ -61,15 +68,17 @@ const LabelSelect = ({ hours, minutes, subLabel }: LabelSelectProps) => {
           name={hours.name}
           selectItems={HOURS}
           defaultValue={hours.defaultValue}
+          onValueChange={hours.onValueChange}
         />
         <p className="flex items-center justify-center test-test">：</p>
         <Select<RegisterRestaurantDataType>
           name={minutes.name}
           selectItems={MINUTES}
           defaultValue={minutes.defaultValue}
+          onValueChange={minutes.onValueChange}
         />
       </div>
-      <p className="text-sm text-red min-h-[20px] mt-[5px]">
+      <p className="text-[12px] text-red min-h-[20px] mt-[5px]">
         {minutes.errorMessages || hours.errorMessages}
       </p>
     </div>
@@ -120,11 +129,23 @@ export const Form = () => {
                 name: "openTime_hours",
                 defaultValue: fields.openTime_hours.initialValue,
                 errorMessages: fields.openTime_hours.errors,
+                onValueChange: (value) => {
+                  form.update({
+                    name: "openTime_hours",
+                    value,
+                  });
+                },
               }}
               minutes={{
                 name: "openTime_minutes",
                 defaultValue: fields.openTime_minutes.initialValue,
                 errorMessages: fields.openTime_minutes.errors,
+                onValueChange: (value) => {
+                  form.update({
+                    name: "openTime_minutes",
+                    value,
+                  });
+                },
               }}
             />
             <LabelSelect
@@ -133,11 +154,23 @@ export const Form = () => {
                 name: "closeTime_hours",
                 defaultValue: fields.closeTime_hours.initialValue,
                 errorMessages: fields.closeTime_hours.errors,
+                onValueChange: (value) => {
+                  form.update({
+                    name: "closeTime_hours",
+                    value,
+                  });
+                },
               }}
               minutes={{
                 name: "closeTime_minutes",
                 defaultValue: fields.closeTime_minutes.initialValue,
                 errorMessages: fields.closeTime_minutes.errors,
+                onValueChange: (value) => {
+                  form.update({
+                    name: "closeTime_minutes",
+                    value,
+                  });
+                },
               }}
             />
           </div>
@@ -157,6 +190,7 @@ export const Form = () => {
           defaultValue={fields.phoneNumber.initialValue}
           errorMessages={fields.phoneNumber.errors}
           key={fields.phoneNumber.key}
+          maxLength={11}
         />
       </div>
       <LabelInput
