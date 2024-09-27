@@ -33,7 +33,7 @@ const LabelInput = ({
 }: Props) => {
   return (
     <div>
-      <div className="grid grid-cols-[100px_1fr]">
+      <div className="grid md:grid-cols-[100px_1fr] grid-cols-[70px_1fr]">
         <Label className="flex items-center text-text">{label}</Label>
         <Input<RegisterRestaurantDataType>
           name={name}
@@ -62,7 +62,7 @@ type LabelSelectProps = {
 const LabelSelect = ({ hours, minutes, subLabel }: LabelSelectProps) => {
   return (
     <div>
-      <div className="grid grid-cols-[70px_1fr_20px_1fr]">
+      <div className="grid md:grid-cols-[70px_1fr_20px_1fr] grid-cols-[50px_1fr_15px_1fr]">
         <Label className="flex items-center text-text">{subLabel}</Label>
         <Select<RegisterRestaurantDataType>
           name={hours.name}
@@ -118,7 +118,7 @@ export const Form = () => {
           errorMessages={fields.name.errors}
           key={fields.name.key}
         />
-        <div className="grid grid-cols-[100px_1fr] gap-2">
+        <div className="grid md:grid-cols-[100px_1fr] grid-cols-[70px_1fr] gap-2">
           <Label className="flex items-center text-text mb-[20px]">
             営業時間
           </Label>
@@ -211,7 +211,11 @@ export const Form = () => {
         </p>
       </div>
       <div className="flex justify-center items-center">
-        <Button type="submit" className="w-[200px]">
+        <Button
+          type="submit"
+          className="w-[200px] rounded-full text-sm"
+          size="lg"
+        >
           登録
         </Button>
       </div>
