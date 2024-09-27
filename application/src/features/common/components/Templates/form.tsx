@@ -107,10 +107,10 @@ export const Form = () => {
       id={form.id}
       onSubmit={form.onSubmit}
       action={action}
-      className="grid grid-rows-[1fr_0.5fr_0.5fr] gap-2"
+      className="md:grid md:grid-rows-[1fr_0.5fr_0.5fr] md:gap-2 flex flex-col gap-2"
       noValidate
     >
-      <div className="grid grid-cols-2 gap-10 justify-center items-center">
+      <div className="md:grid md:grid-cols-2 md:gap-10 md:justify-center md:items-center">
         <LabelInput
           label="店名"
           name="name"
@@ -122,7 +122,7 @@ export const Form = () => {
           <Label className="flex items-center text-text mb-[20px]">
             営業時間
           </Label>
-          <div className="grid grid-rows-2">
+          <div className="md:grid md:grid-rows-2">
             <LabelSelect
               subLabel="open"
               hours={{
@@ -176,7 +176,7 @@ export const Form = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-10">
+      <div className="md:grid md:grid-cols-2 md:gap-10">
         <LabelInput
           label="ジャンル"
           name="genre"
@@ -200,14 +200,16 @@ export const Form = () => {
         errorMessages={fields.address.errors}
         key={fields.address.key}
       />
-      <Input<RegisterRestaurantDataType>
-        name="image"
-        type="file"
-        className="h-[50vh]"
-      />
-      <p className="text-sm text-red min-h-[20px] mt-[5px]">
-        {fields.image.errors}
-      </p>
+      <div>
+        <Input<RegisterRestaurantDataType>
+          name="image"
+          type="file"
+          className="md:h-[50vh] h-[25vh]"
+        />
+        <p className="text-[12px] text-red min-h-[20px] mt-[5px]">
+          {fields.image.errors}
+        </p>
+      </div>
       <div className="flex justify-center items-center">
         <Button type="submit" className="w-[200px]">
           登録
