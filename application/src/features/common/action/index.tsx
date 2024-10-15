@@ -14,7 +14,6 @@ export const registerRestaurantData = async (
   const submission = parseWithZod(formData, {
     schema: REGISTER_RESTAURANT_DATA_SCHEMA,
   });
-  console.log(submission);
   // データが有効でない場合は、エラーをクライアントに返します。
   if (submission.status !== "success") {
     return submission.reply();
