@@ -4,6 +4,7 @@ import isBetween from "dayjs/plugin/isBetween";
 import tz from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import { twMerge } from "tailwind-merge";
+import { z } from "zod";
 
 dayjs.extend(tz);
 dayjs.extend(utc);
@@ -56,3 +57,10 @@ export function handleCheckIfOpen({
 
   return currentTime.isBetween(openDateTime, closeDateTime, "hours", "[]");
 }
+
+// schemaに型定義を追加するための関数
+export const schemaForType =
+  <T>() =>
+  <S extends z.ZodType<T, any, any>>(arg: S) => {
+    return arg;
+  };

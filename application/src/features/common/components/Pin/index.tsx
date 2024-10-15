@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Image from "next/image";
 import { useSpring, animated } from "react-spring";
 import location_pin from "@/public/location_pin.svg";
@@ -12,18 +12,13 @@ type Props = {
 };
 
 export const Pin = ({ selectedLng, lng }: Props) => {
-  // 一般的にpropsでstateの初期値を設定することはアンチパターンとされている
-  // useStateの初期値は初回レンダリング時のみにしかセットされないから
-  // 親にkeyをセットする。keyが変わるたび（再レンダリング）にstateが無理やり初期化される。今回は必要ないかもしれないけど。
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  //　よく考えたらuseMemoの使い方違うし、そもそもいらないので削除
+  const isClicked = lng === selectedLng;
+
   const heartAnimation = useSpring({
     transform: isClicked ? "scale(1.2)" : "scale(1)",
     config: { tension: 300, friction: 10 },
   });
-
-  useMemo(() => {
-    setIsClicked(lng === selectedLng);
-  }, [lng, selectedLng]);
 
   return (
     <animated.button style={heartAnimation}>

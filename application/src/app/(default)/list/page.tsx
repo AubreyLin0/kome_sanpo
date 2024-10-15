@@ -18,13 +18,14 @@ export default async function List() {
       {/* レスポンシブ */}
       <div className="grid grid-cols-[2fr_1fr] gap-4 place-content-center w-full px-3 md:hidden">
         <Search placeholder="店名・ジャンルで検索" data={searchDate} />
-        <Select />
+        {/* todo:Itemsをちゃんと指定する */}
+        <Select selectItems={["中華", "フレンチ"]} />
       </div>
       {/* 通常 */}
       <div className="hidden sm:block">
         <div className="grid grid-cols-auto-fill place-content-center place-items-end">
           <div className="grid-column-end--1 mr-4 hidden md:block">
-            <Select />
+            <Select selectItems={["中華", "フレンチ"]} />
           </div>
         </div>
         <div className="grid grid-cols-auto-fill place-content-center place-items-center">
